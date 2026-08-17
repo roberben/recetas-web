@@ -1,6 +1,90 @@
 import { recipes } from './data/recipes.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Slider Logic
+  const sliderContainer = document.getElementById('sliderContainer');
+  const sliderDots = document.getElementById('sliderDots');
+  const prevBtn = document.getElementById('sliderPrev');
+  const nextBtn = document.getElementById('sliderNext');
+  
+  // Extraer las últimas 3 recetas
+  const sliderRecipes = recipes.slice(0, 3);
+  let currentSlide = 0;
+  let autoplayInterval;
+
+  const initSlider = () => {
+    // Generate slides and dots
+    sliderRecipes.forEach((recipe, index) => {
+      // Create slide
+      const slide = document.createElement('div');
+      slide.className = `slide ${index === 0 ? 'active' : ''}`;
+      slide.innerHTML = `
+        <img src="${recipe.image}" alt="${recipe.title}" class="slide-bg">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-tag">Nuevo</span>
+          <h2 class="slide-title">${recipe.title}</h2>
+          <p class="slide-desc">${recipe.description}</p>
+          <button class="slide-btn">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+            Ver Receta
+          </button>
+        </div>
+      `;
+      sliderContainer.appendChild(slide);
+
+      // Create dot
+      const dot = document.createElement('div');
+      dot.className = `dot ${index === 0 ? 'active' : ''}`;
+      dot.addEventListener('click', () => goToSlide(index));
+      sliderDots.appendChild(dot);
+    });
+
+    startAutoplay();
+  };
+
+  const goToSlide = (index) => {
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+    
+    currentSlide = index;
+    
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+    
+    resetAutoplay();
+  };
+
+  const nextSlide = () => {
+    let nextIndex = (currentSlide + 1) % sliderRecipes.length;
+    goToSlide(nextIndex);
+  };
+
+  const prevSlide = () => {
+    let prevIndex = (currentSlide - 1 + sliderRecipes.length) % sliderRecipes.length;
+    goToSlide(prevIndex);
+  };
+
+  const startAutoplay = () => {
+    autoplayInterval = setInterval(nextSlide, 5000); // 5 segundos
+  };
+
+  const resetAutoplay = () => {
+    clearInterval(autoplayInterval);
+    startAutoplay();
+  };
+
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+  }
+  
+  if (sliderContainer) {
+    initSlider();
+  }
   const recipeGrid = document.getElementById('recipeGrid');
   const filterBtns = document.querySelectorAll('.filter-btn');
   const searchInput = document.getElementById('searchInput');
