@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <span class="slide-tag">Nuevo</span>
           <h2 class="slide-title">${recipe.title}</h2>
           <p class="slide-desc">${recipe.description}</p>
-          <button class="slide-btn">
+          <button class="slide-btn" data-id="${recipe.id}">
             <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
             Ver Receta
           </button>
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <span>${diffIcon} ${recipe.difficulty}</span>
           </div>
           <p class="recipe-desc">${recipe.description}</p>
-          <button class="view-btn">Ver Receta</button>
+          <button class="view-btn" data-id="${recipe.id}">Ver Receta</button>
         </div>
       `;
       
@@ -164,5 +164,68 @@ document.addEventListener('DOMContentLoaded', () => {
     );
     
     renderRecipes(filtered);
+  });
+
+  // Modal Logic
+  const recipeModal = document.getElementById('recipeModal');
+  const closeModalBtn = document.getElementById('closeModal');
+  const modalBody = document.getElementById('modalBody');
+
+  const openModal = (recipe) => {
+    // Icons
+    const timeIcon = `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>`;
+    const diffIcon = `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>`;
+
+    const ingredientsHtml = recipe.ingredients.map(ing => `<li>${ing}</li>`).join('');
+    const instructionsHtml = recipe.instructions.map(inst => `<li>${inst}</li>`).join('');
+
+    modalBody.innerHTML = `
+      <img src="${recipe.image}" alt="${recipe.title}" class="modal-header-img">
+      <div class="modal-body-content">
+        <h2 class="modal-title">${recipe.title}</h2>
+        <div class="modal-meta">
+          <span>${timeIcon} ${recipe.time}</span>
+          <span>${diffIcon} ${recipe.difficulty}</span>
+        </div>
+        <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.6;">${recipe.description}</p>
+        
+        <h3 class="modal-section-title">Ingredientes</h3>
+        <ul class="modal-list">
+          ${ingredientsHtml}
+        </ul>
+        
+        <h3 class="modal-section-title">Instrucciones</h3>
+        <ol class="modal-list steps">
+          ${instructionsHtml}
+        </ol>
+      </div>
+    `;
+    
+    document.body.style.overflow = 'hidden'; // Evitar scroll de fondo
+    recipeModal.classList.add('active');
+  };
+
+  const closeModal = () => {
+    document.body.style.overflow = 'auto'; // Restaurar scroll
+    recipeModal.classList.remove('active');
+  };
+
+  closeModalBtn.addEventListener('click', closeModal);
+  recipeModal.addEventListener('click', (e) => {
+    if (e.target === recipeModal) {
+      closeModal();
+    }
+  });
+
+  // Event delegation para los botones "Ver Receta" (ya que se generan dinámicamente)
+  document.body.addEventListener('click', (e) => {
+    const btn = e.target.closest('.view-btn, .slide-btn');
+    if (btn) {
+      const id = parseInt(btn.getAttribute('data-id'));
+      const recipe = recipes.find(r => r.id === id);
+      if (recipe) {
+        openModal(recipe);
+      }
+    }
   });
 });

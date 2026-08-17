@@ -6,7 +6,25 @@ export const recipes = [
     time: "20 min",
     difficulty: "Fácil",
     image: "https://images.unsplash.com/photo-1528207776546-3221b67f132e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Esponjosos pancakes caseros con arándanos frescos y sirope de arce."
+    description: "Esponjosos pancakes caseros con arándanos frescos y sirope de arce.",
+    ingredients: [
+      "1 taza de harina de trigo",
+      "1 cucharada de azúcar",
+      "2 cucharaditas de polvo de hornear",
+      "1/2 cucharadita de sal",
+      "1 taza de leche",
+      "1 huevo",
+      "2 cucharadas de mantequilla derretida",
+      "1 taza de arándanos frescos"
+    ],
+    instructions: [
+      "En un bol grande, mezcla la harina, el azúcar, el polvo de hornear y la sal.",
+      "Añade la leche, el huevo y la mantequilla derretida; mezcla hasta que se incorporen.",
+      "Incorpora los arándanos suavemente con una espátula.",
+      "Calienta una sartén a fuego medio y engrásala ligeramente.",
+      "Vierte porciones de masa en la sartén y cocina hasta que salgan burbujas en la superficie.",
+      "Voltea y cocina hasta que estén dorados. Sirve con sirope de arce."
+    ]
   },
   {
     id: 2,
@@ -15,7 +33,24 @@ export const recipes = [
     time: "60 min",
     difficulty: "Media",
     image: "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Auténticos tacos mexicanos marinados, servidos con piña, cilantro y cebolla."
+    description: "Auténticos tacos mexicanos marinados, servidos con piña, cilantro y cebolla.",
+    ingredients: [
+      "500g de carne de cerdo fileteada",
+      "2 chiles guajillo (hidratados)",
+      "1 cucharada de pasta de achiote",
+      "1/4 taza de vinagre de manzana",
+      "1/4 de piña en rebanadas",
+      "Tortillas de maíz",
+      "Cilantro y cebolla picados"
+    ],
+    instructions: [
+      "Licúa los chiles, achiote, vinagre y especias al gusto para hacer la marinada.",
+      "Marina la carne de cerdo por al menos 4 horas.",
+      "Cocina la carne en una sartén caliente o parrilla hasta que esté dorada.",
+      "Asa la piña cortada en cubitos.",
+      "Pica la carne finamente y sírvela sobre tortillas calientes.",
+      "Acompaña con piña, cilantro, cebolla y tu salsa favorita."
+    ]
   },
   {
     id: 3,
@@ -24,7 +59,24 @@ export const recipes = [
     time: "40 min",
     difficulty: "Media",
     image: "https://images.unsplash.com/photo-1571115177098-24de370f6120?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "El tradicional postre italiano con capas de bizcocho, café y mascarpone."
+    description: "El tradicional postre italiano con capas de bizcocho, café y mascarpone.",
+    ingredients: [
+      "3 yemas de huevo",
+      "50g de azúcar",
+      "250g de queso mascarpone",
+      "200ml de crema para batir",
+      "1 paquete de bizcochos de soletilla",
+      "1 taza de café espresso fuerte y frío",
+      "Cacao en polvo para espolvorear"
+    ],
+    instructions: [
+      "Bate las yemas con el azúcar hasta que estén pálidas y espumosas.",
+      "Añade el mascarpone y mezcla hasta obtener una crema suave.",
+      "En otro bol, bate la crema hasta que monte y mézclala suavemente con la crema de mascarpone.",
+      "Sumerge rápidamente los bizcochos en el café y colócalos en el fondo de un molde.",
+      "Cubre con la mitad de la crema. Repite las capas de bizcochos y crema.",
+      "Refrigera por al menos 4 horas. Espolvorea con cacao antes de servir."
+    ]
   },
   {
     id: 4,
@@ -33,7 +85,24 @@ export const recipes = [
     time: "35 min",
     difficulty: "Fácil",
     image: "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Una mezcla saludable de avena, plátano, nueces y un toque de canela horneado a la perfección."
+    description: "Una mezcla saludable de avena, plátano, nueces y un toque de canela horneado a la perfección.",
+    ingredients: [
+      "2 tazas de avena en hojuelas",
+      "1 cucharadita de polvo de hornear",
+      "1 cucharadita de canela",
+      "2 plátanos maduros machacados",
+      "2 tazas de leche (o bebida vegetal)",
+      "1/4 taza de miel o jarabe de arce",
+      "1/2 taza de nueces picadas"
+    ],
+    instructions: [
+      "Precalienta el horno a 190°C y engrasa un molde para hornear.",
+      "Mezcla la avena, el polvo de hornear y la canela en un bol.",
+      "En otro recipiente, mezcla los plátanos machacados, la leche y la miel.",
+      "Combina los ingredientes secos con los húmedos e incorpora las nueces.",
+      "Vierte la mezcla en el molde y hornea durante 25-30 minutos hasta que el centro esté firme.",
+      "Deja enfriar unos minutos antes de servir."
+    ]
   },
   {
     id: 5,
@@ -42,7 +111,22 @@ export const recipes = [
     time: "25 min",
     difficulty: "Fácil",
     image: "https://images.unsplash.com/photo-1612874742237-6526221588e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Clásica receta romana con guanciale, queso pecorino, yema de huevo y pimienta negra."
+    description: "Clásica receta romana con guanciale, queso pecorino, yema de huevo y pimienta negra.",
+    ingredients: [
+      "200g de espagueti",
+      "100g de guanciale (o panceta)",
+      "2 yemas de huevo grandes",
+      "50g de queso Pecorino Romano rallado",
+      "Pimienta negra recién molida"
+    ],
+    instructions: [
+      "Hierve la pasta en agua con sal hasta que esté al dente.",
+      "Mientras tanto, en un bol, mezcla las yemas con el queso y abundante pimienta.",
+      "Dora el guanciale en una sartén grande a fuego medio hasta que esté crujiente.",
+      "Escurre la pasta (reservando 1/2 taza del agua de cocción) y añádela a la sartén con el guanciale fuera del fuego.",
+      "Añade la mezcla de huevo y queso a la pasta, removiendo rápidamente. Agrega agua de cocción poco a poco para formar una salsa cremosa.",
+      "Sirve inmediatamente con más queso y pimienta."
+    ]
   },
   {
     id: 6,
@@ -51,6 +135,23 @@ export const recipes = [
     time: "4 horas",
     difficulty: "Difícil",
     image: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Suave y cremoso pastel de queso con un vibrante coulis de frambuesa por encima."
+    description: "Suave y cremoso pastel de queso con un vibrante coulis de frambuesa por encima.",
+    ingredients: [
+      "200g de galletas tipo graham",
+      "100g de mantequilla derretida",
+      "600g de queso crema a temperatura ambiente",
+      "150g de azúcar",
+      "3 huevos",
+      "1 cucharadita de extracto de vainilla",
+      "200g de frambuesas frescas",
+      "2 cucharadas de azúcar para el coulis"
+    ],
+    instructions: [
+      "Tritura las galletas y mézclalas con la mantequilla. Presiona la mezcla en el fondo de un molde y hornea a 180°C por 10 min.",
+      "Bate el queso crema con el azúcar hasta que esté suave. Añade los huevos uno a uno y la vainilla.",
+      "Vierte el relleno sobre la base enfriada y hornea a 160°C durante 45-50 min.",
+      "Deja enfriar el cheesecake en el horno apagado por 1 hora, luego refrigera por al menos 4 horas.",
+      "Para el coulis, calienta las frambuesas con 2 cucharadas de azúcar hasta que se deshagan. Cuela y vierte sobre el pastel frío."
+    ]
   }
 ];
