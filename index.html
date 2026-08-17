@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sabor Estelar | Recetas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="background-elements">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <header class="header">
+    <nav class="nav">
+      <div class="logo">Sabor<span>Estelar</span></div>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Buscar recetas...">
+      </div>
+    </nav>
+    <div class="hero">
+      <h1>Descubre el Arte de <span>Cocinar</span></h1>
+      <p>Recetas extraordinarias para momentos inolvidables.</p>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="filters">
+      <button class="filter-btn active" data-category="all">Todas</button>
+      <button class="filter-btn" data-category="desayuno">Desayuno</button>
+      <button class="filter-btn" data-category="plato principal">Plato Principal</button>
+      <button class="filter-btn" data-category="postre">Postre</button>
+    </div>
+
+    <section id="recipeGrid" class="recipe-grid">
+      <!-- Recipe cards will be dynamically injected here -->
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Sabor Estelar. Creado para GitHub Pages.</p>
+  </footer>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
