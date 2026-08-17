@@ -1,21 +1,49 @@
-import { recipes } from './data/recipes.js';
+import { db } from './src/firebase.js';
+import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Slider Logic
+document.addEventListener('DOMContentLoaded', async () => {
   const sliderContainer = document.getElementById('sliderContainer');
   const sliderDots = document.getElementById('sliderDots');
   const prevBtn = document.getElementById('sliderPrev');
   const nextBtn = document.getElementById('sliderNext');
-  
-  // Extraer las últimas 3 recetas
-  const sliderRecipes = recipes.slice(0, 3);
+  const recipeGrid = document.getElementById('recipeGrid');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const searchInput = document.getElementById('searchInput');
+  const recipeModal = document.getElementById('recipeModal');
+  const closeModalBtn = document.getElementById('closeModal');
+  const modalBody = document.getElementById('modalBody');
+
+  let recipes = []; // Global array for recipes
   let currentSlide = 0;
   let autoplayInterval;
+  let sliderRecipes = [];
 
+  // Mostrar mensaje de carga
+  recipeGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: white; padding: 2rem; font-size: 1.2rem;">Cargando recetas desde la nube...</p>';
+
+  try {
+    const q = query(collection(db, "recipes"), orderBy("createdAt", "desc"));
+    const querySnapshot = await getDocs(q);
+    
+    querySnapshot.forEach((doc) => {
+      recipes.push({ id: doc.id, ...doc.data() });
+    });
+  } catch (error) {
+    console.error("Error cargando recetas:", error);
+    recipeGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #ef4444; padding: 2rem;">Error al conectar con la base de datos de recetas.</p>';
+    return;
+  }
+
+  // Slider Logic
+  sliderRecipes = recipes.slice(0, 3);
+  
   const initSlider = () => {
-    // Generate slides and dots
+    if (sliderRecipes.length === 0) return;
+    
+    sliderContainer.innerHTML = '';
+    sliderDots.innerHTML = '';
+
     sliderRecipes.forEach((recipe, index) => {
-      // Create slide
       const slide = document.createElement('div');
       slide.className = `slide ${index === 0 ? 'active' : ''}`;
       slide.innerHTML = `
@@ -33,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       sliderContainer.appendChild(slide);
 
-      // Create dot
       const dot = document.createElement('div');
       dot.className = `dot ${index === 0 ? 'active' : ''}`;
       dot.addEventListener('click', () => goToSlide(index));
@@ -46,30 +73,32 @@ document.addEventListener('DOMContentLoaded', () => {
   const goToSlide = (index) => {
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
+    if(slides.length === 0) return;
     
     slides[currentSlide].classList.remove('active');
     dots[currentSlide].classList.remove('active');
-    
     currentSlide = index;
-    
     slides[currentSlide].classList.add('active');
     dots[currentSlide].classList.add('active');
-    
     resetAutoplay();
   };
 
   const nextSlide = () => {
+    if(sliderRecipes.length === 0) return;
     let nextIndex = (currentSlide + 1) % sliderRecipes.length;
     goToSlide(nextIndex);
   };
 
   const prevSlide = () => {
+    if(sliderRecipes.length === 0) return;
     let prevIndex = (currentSlide - 1 + sliderRecipes.length) % sliderRecipes.length;
     goToSlide(prevIndex);
   };
 
   const startAutoplay = () => {
-    autoplayInterval = setInterval(nextSlide, 5000); // 5 segundos
+    if(sliderRecipes.length > 1) {
+      autoplayInterval = setInterval(nextSlide, 5000);
+    }
   };
 
   const resetAutoplay = () => {
@@ -85,11 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (sliderContainer) {
     initSlider();
   }
-  const recipeGrid = document.getElementById('recipeGrid');
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const searchInput = document.getElementById('searchInput');
 
-  // Función para renderizar tarjetas
+  // Cards Logic
   const renderRecipes = (recipesToRender) => {
     recipeGrid.innerHTML = '';
     
@@ -99,13 +125,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     recipesToRender.forEach((recipe, index) => {
-      // Create card element
       const card = document.createElement('article');
       card.className = 'recipe-card';
-      // Slight staggered animation
       card.style.animationDelay = `${index * 0.1}s`;
       
-      // SVG icons
       const timeIcon = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>`;
       const diffIcon = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>`;
 
@@ -124,21 +147,16 @@ document.addEventListener('DOMContentLoaded', () => {
           <button class="view-btn" data-id="${recipe.id}">Ver Receta</button>
         </div>
       `;
-      
       recipeGrid.appendChild(card);
     });
   };
 
-  // Render inicial
   renderRecipes(recipes);
 
-  // Funcionalidad de filtros por categoría
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      // Actualizar estado activo
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
       const category = btn.getAttribute('data-category');
       
       if (category === 'all') {
@@ -150,34 +168,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Funcionalidad de búsqueda
   searchInput.addEventListener('input', (e) => {
     const searchTerm = e.target.value.toLowerCase();
-    
-    // Resetear filtros visualmente cuando se busca
     filterBtns.forEach(b => b.classList.remove('active'));
-    filterBtns[0].classList.add('active'); // Seleccionar 'Todas'
-
+    filterBtns[0].classList.add('active'); 
     const filtered = recipes.filter(r => 
       r.title.toLowerCase().includes(searchTerm) || 
       r.description.toLowerCase().includes(searchTerm)
     );
-    
     renderRecipes(filtered);
   });
 
   // Modal Logic
-  const recipeModal = document.getElementById('recipeModal');
-  const closeModalBtn = document.getElementById('closeModal');
-  const modalBody = document.getElementById('modalBody');
-
   const openModal = (recipe) => {
-    // Icons
     const timeIcon = `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>`;
     const diffIcon = `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>`;
 
-    const ingredientsHtml = recipe.ingredients.map(ing => `<li>${ing}</li>`).join('');
-    const instructionsHtml = recipe.instructions.map(inst => `<li>${inst}</li>`).join('');
+    const ingredientsHtml = (recipe.ingredients || []).map(ing => `<li>${ing}</li>`).join('');
+    const instructionsHtml = (recipe.instructions || []).map(inst => `<li>${inst}</li>`).join('');
 
     modalBody.innerHTML = `
       <img src="${recipe.image}" alt="${recipe.title}" class="modal-header-img">
@@ -200,32 +208,26 @@ document.addEventListener('DOMContentLoaded', () => {
         </ol>
       </div>
     `;
-    
-    document.body.style.overflow = 'hidden'; // Evitar scroll de fondo
+    document.body.style.overflow = 'hidden'; 
     recipeModal.classList.add('active');
   };
 
   const closeModal = () => {
-    document.body.style.overflow = 'auto'; // Restaurar scroll
+    document.body.style.overflow = 'auto'; 
     recipeModal.classList.remove('active');
   };
 
   closeModalBtn.addEventListener('click', closeModal);
   recipeModal.addEventListener('click', (e) => {
-    if (e.target === recipeModal) {
-      closeModal();
-    }
+    if (e.target === recipeModal) closeModal();
   });
 
-  // Event delegation para los botones "Ver Receta" (ya que se generan dinámicamente)
   document.body.addEventListener('click', (e) => {
     const btn = e.target.closest('.view-btn, .slide-btn');
     if (btn) {
-      const id = parseInt(btn.getAttribute('data-id'));
-      const recipe = recipes.find(r => r.id === id);
-      if (recipe) {
-        openModal(recipe);
-      }
+      const id = btn.getAttribute('data-id');
+      const recipe = recipes.find(r => r.id === id || r.id == id);
+      if (recipe) openModal(recipe);
     }
   });
 });

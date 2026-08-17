@@ -1,0 +1,130 @@
+/* Admin Specific Styles */
+.admin-container {
+  display: none;
+  min-height: 100vh;
+  padding: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-container.active {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-card {
+  background: var(--card-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  padding: 2.5rem;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+.admin-card.wide {
+  max-width: 800px;
+  margin-top: 2rem;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--glass-border);
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+.form-row .form-group {
+  flex: 1;
+}
+
+.admin-btn {
+  background: var(--accent-color);
+  color: #000;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.admin-btn:hover {
+  background: #fbbf24;
+}
+
+.admin-btn.outline {
+  background: transparent;
+  color: #fff;
+  border: 1px solid var(--glass-border);
+}
+
+.admin-btn.secondary {
+  background: #334155;
+  color: #fff;
+}
+
+.admin-btn.full-width {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.error-msg {
+  color: #ef4444;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.success-msg {
+  color: #10b981;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.admin-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
