@@ -1,5 +1,37 @@
 export const recipes = [
   {
+    id: 7,
+    title: "Codillos de Cerdo al Horno",
+    category: "plato principal",
+    time: "2 horas",
+    difficulty: "Media",
+    image: "https://images.unsplash.com/photo-1544025162-8111149c402f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    description: "Jugosos codillos asados lentamente con un glaseado de mostaza y miel, acompañados de patatas tiernas y tomates asados.",
+    ingredients: [
+      "🥩 PARA LA CARNE:",
+      "2 Codillos de cerdo (aprox. 700 g cada uno)",
+      "Aceite de oliva virgen extra (2-3 cucharadas)",
+      "Sal y pimienta negra molida al gusto",
+      "1.5 vasos de vino para cocinar (o agua)",
+      "🍯 PARA LA SALSA:",
+      "2 cdas soperas colmadas de mostaza",
+      "2 cdas soperas de miel",
+      "1 cdita de ajo en polvo",
+      "1 cdita de cebolla en polvo",
+      "1 cdita de pimentón dulce",
+      "🥔 PARA LA GUARNICIÓN:",
+      "3-4 patatas medianas troceadas",
+      "8-10 tomates cherry"
+    ],
+    instructions: [
+      "Condimenta los codillos en una bandeja con el aceite, sal y pimienta, masajeando bien la carne.",
+      "Hornea a 180 ºC con 1/2 vaso de vino en el fondo durante 30 minutos (dando la vuelta a los 15 min).",
+      "Mezcla la mostaza, miel, ajo, cebolla y pimentón para crear la salsa glaseada.",
+      "Unta los codillos con la salsa, añade 1 vaso de vino al fondo, cubre con aluminio y hornea 1 hora más.",
+      "Quita el aluminio, vuelve a pincelar, añade las patatas y los tomates, y hornea destapado 30 minutos finales (dando la vuelta a los codillos a la mitad)."
+    ]
+  },
+  {
     id: 1,
     title: "Pancakes de Arándanos",
     category: "desayuno",
