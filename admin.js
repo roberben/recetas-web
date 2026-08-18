@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const recipeListContainer = document.getElementById('recipeListContainer');
   const cancelEditBtn = document.getElementById('cancelEditBtn');
   const formTitle = document.getElementById('formTitle');
-  const recipeCategorySelect = document.getElementById('recipeCategory');
+  const recipeCategoriesContainer = document.getElementById('recipeCategoriesContainer');
   
   const categoryListContainer = document.getElementById('categoryListContainer');
   const newCategoryInput = document.getElementById('newCategoryInput');
@@ -115,12 +115,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- CATEGORIES LOGIC ---
   const populateCategorySelect = () => {
-    recipeCategorySelect.innerHTML = '';
+    recipeCategoriesContainer.innerHTML = '';
     currentCategories.forEach(cat => {
-      const opt = document.createElement('option');
-      opt.value = cat;
-      opt.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
-      recipeCategorySelect.appendChild(opt);
+      const label = document.createElement('label');
+      label.className = 'checkbox-label';
+      label.innerHTML = `
+        <input type="checkbox" name="recipeCategories" value="${cat}">
+        ${cat}
+      `;
+      recipeCategoriesContainer.appendChild(label);
     });
   };
 
@@ -237,7 +240,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('recipeId').value = recipe.id;
     document.getElementById('recipeTitle').value = recipe.title;
-    document.getElementById('recipeCategory').value = recipe.category;
+    
+    const catCheckboxes = document.querySelectorAll('input[name="recipeCategories"]');
+    catCheckboxes.forEach(cb => {
+      if (Array.isArray(recipe.category)) {
+        cb.checked = recipe.category.includes(cb.value);
+      } else {
+        cb.checked = (recipe.category === cb.value);
+      }
+    });
+
     document.getElementById('recipeTime').value = recipe.time;
     document.getElementById('recipeDifficulty').value = recipe.difficulty;
     document.getElementById('recipeDescription').value = recipe.description;
@@ -336,13 +348,22 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!finalImageUrl) {
         finalImageUrl = "https://images.unsplash.com/photo-1495195134817-aeb325a55b65?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
       }
+      
+      const selectedCats = Array.from(document.querySelectorAll('input[name="recipeCategories"]:checked')).map(cb => cb.value);
+      if (selectedCats.length === 0) {
+        document.getElementById('categoryError').style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = isEditing ? 'Guardar Cambios' : 'Publicar en GitHub';
+        return;
+      }
+      document.getElementById('categoryError').style.display = 'none';
 
       formFeedback.textContent = 'Guardando en la base de datos...';
       
       const newRecipeData = {
         id: isEditing ? parseInt(editingId) : Date.now(),
         title: document.getElementById('recipeTitle').value,
-        category: document.getElementById('recipeCategory').value,
+        category: selectedCats,
         time: document.getElementById('recipeTime').value,
         difficulty: document.getElementById('recipeDifficulty').value,
         description: document.getElementById('recipeDescription').value,

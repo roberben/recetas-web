@@ -151,10 +151,11 @@
               <input type="text" id="recipeTitle" required>
             </div>
             <div class="form-group">
-              <label>Categoría</label>
-              <select id="recipeCategory" required>
-                <option value="">Cargando...</option>
-              </select>
+              <label>Categorías</label>
+              <div id="recipeCategoriesContainer" class="checkbox-grid">
+                <!-- Checkboxes loaded via JS -->
+              </div>
+              <small id="categoryError" class="error-msg" style="display:none;">Debes seleccionar al menos una categoría.</small>
             </div>
           </div>
 

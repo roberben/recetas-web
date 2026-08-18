@@ -113,9 +113,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const timeIcon = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>`;
       const diffIcon = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>`;
 
+      const categoryText = Array.isArray(recipe.category) 
+        ? recipe.category.map(c => c.charAt(0).toUpperCase() + c.slice(1)).join(', ')
+        : recipe.category.charAt(0).toUpperCase() + recipe.category.slice(1);
+
       card.innerHTML = `
         <div class="recipe-img-container">
-          <span class="recipe-category">${recipe.category.charAt(0).toUpperCase() + recipe.category.slice(1)}</span>
+          <span class="recipe-category">${categoryText}</span>
           <img src="${recipe.image}" alt="${recipe.title}" class="recipe-img" loading="lazy">
         </div>
         <div class="recipe-content">
@@ -153,7 +157,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (category === 'all') {
         renderRecipes(recipes);
       } else {
-        const filtered = recipes.filter(r => r.category === category);
+        const filtered = recipes.filter(r => {
+          if (Array.isArray(r.category)) {
+            return r.category.includes(category);
+          } else {
+            return r.category === category;
+          }
+        });
         renderRecipes(filtered);
       }
     });
