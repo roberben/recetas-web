@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentSlide = 0;
   let autoplayInterval;
-  const sliderRecipes = recipes.slice(0, 3);
+  let isSliderHovered = false;
+  const sliderRecipes = recipes.slice(0, 5);
 
   // Slider Logic
   const initSlider = () => {
@@ -27,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sliderRecipes.forEach((recipe, index) => {
       const slide = document.createElement('div');
       slide.className = `slide ${index === 0 ? 'active' : ''}`;
+      slide.setAttribute('data-id', recipe.id);
       slide.innerHTML = `
         <img src="${recipe.image}" alt="${recipe.title}" class="slide-bg">
         <div class="slide-overlay"></div>
@@ -34,10 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
           <span class="slide-tag">Nuevo</span>
           <h2 class="slide-title">${recipe.title}</h2>
           <p class="slide-desc">${recipe.description}</p>
-          <button class="slide-btn" data-id="${recipe.id}">
-            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
-            Ver Receta
-          </button>
         </div>
       `;
       sliderContainer.appendChild(slide);
@@ -77,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const startAutoplay = () => {
-    if(sliderRecipes.length > 1) {
+    if(sliderRecipes.length > 1 && !isSliderHovered) {
       autoplayInterval = setInterval(nextSlide, 5000);
     }
   };
@@ -90,6 +88,18 @@ document.addEventListener('DOMContentLoaded', () => {
   if (prevBtn && nextBtn) {
     prevBtn.addEventListener('click', prevSlide);
     nextBtn.addEventListener('click', nextSlide);
+  }
+
+  const heroSlider = document.getElementById('heroSlider');
+  if (heroSlider) {
+    heroSlider.addEventListener('mouseenter', () => {
+      isSliderHovered = true;
+      clearInterval(autoplayInterval);
+    });
+    heroSlider.addEventListener('mouseleave', () => {
+      isSliderHovered = false;
+      startAutoplay();
+    });
   }
   
   if (sliderContainer) {
@@ -259,7 +269,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   document.body.addEventListener('click', (e) => {
-    const trigger = e.target.closest('.view-btn, .slide-btn, .recipe-card');
+    if (e.target.closest('.slider-logo, .slider-arrow, .dot, .close-modal')) return;
+
+    const trigger = e.target.closest('.view-btn, .slide-btn, .recipe-card, .slide');
     if (trigger) {
       const id = parseInt(trigger.getAttribute('data-id'));
       const recipe = recipes.find(r => r.id === id || r.id == id);
