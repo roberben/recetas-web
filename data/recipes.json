@@ -70,31 +70,5 @@
       "Unta los codillos con la salsa, añade 1 vaso de vino al fondo, cubre con aluminio y hornea 1 hora más.",
       "Quita el aluminio, vuelve a pincelar, añade las patatas y los tomates, y hornea destapado 30 minutos finales (dando la vuelta a los codillos a la mitad)."
     ]
-  },
-  {
-    "id": 2,
-    "title": "Tacos al Pastor",
-    "category": "plato principal",
-    "time": "60 min",
-    "difficulty": "Media",
-    "image": "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    "description": "Auténticos tacos mexicanos marinados, servidos con piña, cilantro y cebolla.",
-    "ingredients": [
-      "500g de carne de cerdo fileteada",
-      "2 chiles guajillo (hidratados)",
-      "1 cucharada de pasta de achiote",
-      "1/4 taza de vinagre de manzana",
-      "1/4 de piña en rebanadas",
-      "Tortillas de maíz",
-      "Cilantro y cebolla picados"
-    ],
-    "instructions": [
-      "Licúa los chiles, achiote, vinagre y especias al gusto para hacer la marinada.",
-      "Marina la carne de cerdo por al menos 4 horas.",
-      "Cocina la carne en una sartén caliente o parrilla hasta que esté dorada.",
-      "Asa la piña cortada en cubitos.",
-      "Pica la carne finamente y sírvela sobre tortillas calientes.",
-      "Acompaña con piña, cilantro, cebolla y tu salsa favorita."
-    ]
   }
 ]
