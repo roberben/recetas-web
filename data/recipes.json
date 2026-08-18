@@ -1,5 +1,18 @@
 [
   {
+    "id": 1787069906985,
+    "title": "Paté Casero de Tres Quesos",
+    "category": [
+      "entrantes"
+    ],
+    "time": "'40 min",
+    "difficulty": "Fácil",
+    "description": "Una crema para untar intensa, untuosa y llena de sabor, perfecta para tablas de aperitivos, tostas crujientes o picoteos especiales.",
+    "image": "./images/recipe_1787069903992_Patdequeso.jpg",
+    "ingredients": "🧀 Para la base de quesos fundidos:\n\n100 g Queso bola (Edam o Gouda) troceado\n100 g Queso Gruyère troceado\n20 g Mantequilla\n50 g Nata líquida (mínimo 35% M.G.)\n50 g Leche entera\n1 ud Huevo entero\n1 ud Yema de huevo\nc/n Pimienta negra molida (al gusto)\n\n🌿 Para el toque final:\n\n150 g Queso Roquefort (o queso azul)\n50 g Mayonesa\nOpcional Nueces picadas (al gusto)",
+    "instructions": "1️⃣ Triturado inicial\n\nEn el vaso de la batidora o procesador de alimentos, añade el queso bola, el queso Gruyère en dados, la mantequilla, la nata, la leche, el huevo, la yema y un toque de pimienta.\n\nTritura todo a potencia media-alta hasta conseguir una pasta lo más uniforme posible.\n\n\n2️⃣ Cocción suave\n\nVierte la mezcla triturada en una olla o cazo pequeño.\n\nCocina a fuego muy bajo durante 10 minutos, removiendo de forma continua con una espátula o varillas para evitar que se pegue al fondo y conseguir que los quesos se fundan por completo.\n\n\n3️⃣ Integrar el Roquefort y emulsionar\n\nRetira la olla del fuego.\n\nIncorpora los 150 g de queso Roquefort desmigado y los 50 g de mayonesa.\n\nMezcla enérgicamente con las varillas hasta que el Roquefort se deshaga con el calor residual y obtengas una textura sedosa, fina y homogénea.\n\n\n4️⃣ Enfriado y presentación\n\nVierte el paté en un tarro de cristal o cuenco de servir.\n\nDeja templar a temperatura ambiente y luego refrigera al menos 2 a 3 horas para que coja cuerpo y consistencia untable antes de servir.\n\n\n💡 Consejo del chef:\n\nToque crujiente: En el paso final, al añadir la mayonesa y el Roquefort, puedes incorporar nueces picadas para darle un delicioso contraste de textura.\n\nServicio: Acompáñalo con pan tostado, picos artesanos, regañás o rodajas de pan rústico recién horneado."
+  },
+  {
     "id": 1787068870315,
     "title": "Pan Casero Rápido",
     "category": [
