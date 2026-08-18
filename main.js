@@ -1,7 +1,6 @@
-import { db } from './src/firebase.js';
-import { collection, getDocs, query, orderBy } from 'firebase/firestore';
+import { recipes } from './data/recipes.js';
 
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
   const sliderContainer = document.getElementById('sliderContainer');
   const sliderDots = document.getElementById('sliderDots');
   const prevBtn = document.getElementById('sliderPrev');
@@ -13,30 +12,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   const closeModalBtn = document.getElementById('closeModal');
   const modalBody = document.getElementById('modalBody');
 
-  let recipes = []; // Global array for recipes
   let currentSlide = 0;
   let autoplayInterval;
-  let sliderRecipes = [];
-
-  // Mostrar mensaje de carga
-  recipeGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: white; padding: 2rem; font-size: 1.2rem;">Cargando recetas desde la nube...</p>';
-
-  try {
-    const q = query(collection(db, "recipes"), orderBy("createdAt", "desc"));
-    const querySnapshot = await getDocs(q);
-    
-    querySnapshot.forEach((doc) => {
-      recipes.push({ id: doc.id, ...doc.data() });
-    });
-  } catch (error) {
-    console.error("Error cargando recetas:", error);
-    recipeGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #ef4444; padding: 2rem;">Error al conectar con la base de datos de recetas.</p>';
-    return;
-  }
+  const sliderRecipes = recipes.slice(0, 3);
 
   // Slider Logic
-  sliderRecipes = recipes.slice(0, 3);
-  
   const initSlider = () => {
     if (sliderRecipes.length === 0) return;
     
@@ -225,7 +205,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.body.addEventListener('click', (e) => {
     const btn = e.target.closest('.view-btn, .slide-btn');
     if (btn) {
-      const id = btn.getAttribute('data-id');
+      const id = parseInt(btn.getAttribute('data-id'));
       const recipe = recipes.find(r => r.id === id || r.id == id);
       if (recipe) openModal(recipe);
     }
