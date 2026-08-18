@@ -674,9 +674,28 @@ body {
 }
 
 @media (max-width: 768px) {
-  .hero h1 { font-size: 2.5rem; }
-  .nav { flex-direction: column; gap: 1rem; }
   .search-bar input { width: 100%; }
+  
+  /* Mobile Slider Adjustments */
+  .slider-logo { 
+    max-height: 80px; 
+    top: 15px; 
+    left: 15px; 
+  }
+  .slide-title { 
+    font-size: 2rem; 
+    margin-bottom: 0.5rem;
+  }
+  .slide-desc { 
+    display: none; 
+  }
+  .hero-slider { 
+    min-height: 300px; 
+    height: 50vh; 
+  }
+  .slide { 
+    padding: 2rem 1.5rem; 
+  }
 }
 
 /* Markdown Styles */
