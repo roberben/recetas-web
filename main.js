@@ -276,8 +276,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Image Lightbox Logic
+  const imageModal = document.getElementById('imageModal');
+  const closeImageModal = document.getElementById('closeImageModal');
+  const fullscreenImage = document.getElementById('fullscreenImage');
+
+  if (closeImageModal) {
+    closeImageModal.addEventListener('click', () => {
+      imageModal.classList.remove('active');
+    });
+  }
+
+  if (imageModal) {
+    imageModal.addEventListener('click', (e) => {
+      if (e.target === imageModal) {
+        imageModal.classList.remove('active');
+      }
+    });
+  }
+
   document.body.addEventListener('click', (e) => {
     if (e.target.closest('.slider-logo, .slider-arrow, .dot, .close-modal, .share-btn, .share-menu')) return;
+
+    if (e.target.classList.contains('modal-header-img')) {
+      if (fullscreenImage && imageModal) {
+        fullscreenImage.src = e.target.src;
+        imageModal.classList.add('active');
+      }
+      return;
+    }
 
     const trigger = e.target.closest('.view-btn, .slide-btn, .recipe-card, .slide');
     if (trigger) {

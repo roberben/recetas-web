@@ -473,6 +473,12 @@ body {
   height: 300px;
   object-fit: cover;
   border-radius: 20px 20px 0 0;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.modal-header-img:hover {
+  opacity: 0.9;
 }
 
 .modal-body-content {
