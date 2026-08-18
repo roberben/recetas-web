@@ -1,21 +1,30 @@
 const GITHUB_OWNER = 'roberben';
 const GITHUB_REPO = 'recetas-web';
-const DB_PATH = 'data/recipes.json';
+const RECIPES_PATH = 'data/recipes.json';
+const CATS_PATH = 'data/categories.json';
 
 document.addEventListener('DOMContentLoaded', () => {
   const loginSection = document.getElementById('loginSection');
   const dashboardSection = document.getElementById('dashboardSection');
   const loginForm = document.getElementById('loginForm');
   const logoutBtn = document.getElementById('logoutBtn');
+  
   const recipeForm = document.getElementById('recipeForm');
   const formFeedback = document.getElementById('formFeedback');
   const recipeListContainer = document.getElementById('recipeListContainer');
   const cancelEditBtn = document.getElementById('cancelEditBtn');
   const formTitle = document.getElementById('formTitle');
+  const recipeCategorySelect = document.getElementById('recipeCategory');
   
+  const categoryListContainer = document.getElementById('categoryListContainer');
+  const newCategoryInput = document.getElementById('newCategoryInput');
+  const addCategoryBtn = document.getElementById('addCategoryBtn');
+
   let githubToken = localStorage.getItem('gh_token');
   let currentRecipes = [];
-  let dbSha = '';
+  let currentCategories = [];
+  let recipesSha = '';
+  let categoriesSha = '';
 
   const checkAuth = async () => {
     if (githubToken) {
@@ -26,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (res.ok) {
           loginSection.classList.remove('active');
           dashboardSection.style.display = 'flex';
-          loadRecipes(); // Cargar la lista al iniciar
+          loadData();
           return;
         }
       } catch (e) {}
@@ -51,27 +60,142 @@ document.addEventListener('DOMContentLoaded', () => {
     checkAuth();
   });
 
-  // Fetch and display recipes
-  const loadRecipes = async () => {
-    recipeListContainer.innerHTML = '<p style="text-align: center; color: var(--text-secondary);">Cargando...</p>';
+  const commitToGithub = async (message, newContent, updateSha, path) => {
+    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(newContent, null, 2))));
+    const updateRes = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${githubToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: message,
+        content: encoded,
+        sha: updateSha
+      })
+    });
+    if (!updateRes.ok) throw new Error("Fallo al hacer commit a GitHub en " + path);
+    return await updateRes.json();
+  };
+
+  // --- DATA LOADING ---
+  const loadData = async () => {
+    recipeListContainer.innerHTML = '<p style="text-align: center; color: var(--text-secondary);">Cargando recetas...</p>';
+    categoryListContainer.innerHTML = '<p style="text-align: center; color: var(--text-secondary);">Cargando categorías...</p>';
+    
     try {
-      const res = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${DB_PATH}?t=${Date.now()}`, {
+      // Fetch Recipes
+      const resRecipes = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${RECIPES_PATH}?t=${Date.now()}`, {
         headers: { 'Authorization': `token ${githubToken}` }
       });
-      if (!res.ok) throw new Error("No se pudo leer la base de datos.");
-      
-      const fileData = await res.json();
-      dbSha = fileData.sha;
-      const content = decodeURIComponent(escape(atob(fileData.content)));
-      currentRecipes = JSON.parse(content);
-      
-      renderRecipeList();
+      if (resRecipes.ok) {
+        const fileData = await resRecipes.json();
+        recipesSha = fileData.sha;
+        currentRecipes = JSON.parse(decodeURIComponent(escape(atob(fileData.content))));
+        renderRecipeList();
+      }
+
+      // Fetch Categories
+      const resCats = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${CATS_PATH}?t=${Date.now()}`, {
+        headers: { 'Authorization': `token ${githubToken}` }
+      });
+      if (resCats.ok) {
+        const fileData = await resCats.json();
+        categoriesSha = fileData.sha;
+        currentCategories = JSON.parse(decodeURIComponent(escape(atob(fileData.content))));
+        renderCategoryList();
+        populateCategorySelect();
+      }
+
     } catch (error) {
       console.error(error);
-      recipeListContainer.innerHTML = '<p style="color: #ef4444;">Error al cargar recetas.</p>';
+      alert("Error al cargar los datos desde GitHub.");
     }
   };
 
+  // --- CATEGORIES LOGIC ---
+  const populateCategorySelect = () => {
+    recipeCategorySelect.innerHTML = '';
+    currentCategories.forEach(cat => {
+      const opt = document.createElement('option');
+      opt.value = cat;
+      opt.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
+      recipeCategorySelect.appendChild(opt);
+    });
+  };
+
+  const renderCategoryList = () => {
+    categoryListContainer.innerHTML = '';
+    if (currentCategories.length === 0) {
+      categoryListContainer.innerHTML = '<p style="color: var(--text-secondary);">No hay categorías.</p>';
+      return;
+    }
+
+    currentCategories.forEach(cat => {
+      const card = document.createElement('div');
+      card.className = 'admin-recipe-card';
+      card.style.padding = '0.8rem 1rem';
+      card.innerHTML = `
+        <h4 style="text-transform: capitalize;">${cat}</h4>
+        <button class="btn-icon delete cat-delete" data-cat="${cat}" title="Eliminar">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+        </button>
+      `;
+      categoryListContainer.appendChild(card);
+    });
+
+    document.querySelectorAll('.cat-delete').forEach(btn => {
+      btn.addEventListener('click', (e) => deleteCategory(e.currentTarget.getAttribute('data-cat')));
+    });
+  };
+
+  addCategoryBtn.addEventListener('click', async () => {
+    const newCat = newCategoryInput.value.trim().toLowerCase();
+    if (!newCat) return;
+    if (currentCategories.includes(newCat)) {
+      alert("La categoría ya existe.");
+      return;
+    }
+
+    addCategoryBtn.textContent = '...';
+    addCategoryBtn.disabled = true;
+
+    try {
+      const newArray = [...currentCategories, newCat];
+      const resData = await commitToGithub(`Añadir categoría: ${newCat}`, newArray, categoriesSha, CATS_PATH);
+      
+      categoriesSha = resData.content.sha;
+      currentCategories = newArray;
+      
+      newCategoryInput.value = '';
+      renderCategoryList();
+      populateCategorySelect();
+    } catch (err) {
+      alert("Error al añadir categoría: " + err.message);
+    } finally {
+      addCategoryBtn.textContent = 'Añadir';
+      addCategoryBtn.disabled = false;
+    }
+  });
+
+  const deleteCategory = async (cat) => {
+    const confirmDelete = confirm(`¿Borrar la categoría "${cat}"? Las recetas que usen esta categoría seguirán existiendo.`);
+    if (!confirmDelete) return;
+
+    try {
+      const newArray = currentCategories.filter(c => c !== cat);
+      const resData = await commitToGithub(`Borrar categoría: ${cat}`, newArray, categoriesSha, CATS_PATH);
+      
+      categoriesSha = resData.content.sha;
+      currentCategories = newArray;
+      renderCategoryList();
+      populateCategorySelect();
+    } catch (err) {
+      alert("Error al eliminar categoría: " + err.message);
+    }
+  };
+
+  // --- RECIPES LOGIC ---
   const renderRecipeList = () => {
     recipeListContainer.innerHTML = '';
     if (currentRecipes.length === 0) {
@@ -99,7 +223,6 @@ document.addEventListener('DOMContentLoaded', () => {
       recipeListContainer.appendChild(card);
     });
 
-    // Attach listeners
     document.querySelectorAll('.btn-icon.edit').forEach(btn => {
       btn.addEventListener('click', (e) => editRecipe(e.currentTarget.getAttribute('data-id')));
     });
@@ -145,41 +268,20 @@ document.addEventListener('DOMContentLoaded', () => {
     resetForm();
   });
 
-  const commitToGithub = async (message, newContent, updateSha) => {
-    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(newContent, null, 2))));
-    const updateRes = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${DB_PATH}`, {
-      method: 'PUT',
-      headers: {
-        'Authorization': `token ${githubToken}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        message: message,
-        content: encoded,
-        sha: updateSha
-      })
-    });
-    if (!updateRes.ok) throw new Error("Fallo al hacer commit a GitHub");
-    return await updateRes.json();
-  };
-
   const deleteRecipe = async (id) => {
     const confirmDelete = confirm("¿Estás seguro de que quieres eliminar esta receta?");
     if (!confirmDelete) return;
 
     try {
-      recipeListContainer.innerHTML = '<p style="text-align: center; color: var(--accent-color);">Eliminando en GitHub...</p>';
-      
       const newArray = currentRecipes.filter(r => r.id != id);
-      const resData = await commitToGithub(`Borrar receta ${id}`, newArray, dbSha);
+      const resData = await commitToGithub(`Borrar receta ${id}`, newArray, recipesSha, RECIPES_PATH);
       
-      dbSha = resData.content.sha;
+      recipesSha = resData.content.sha;
       currentRecipes = newArray;
       renderRecipeList();
       alert("Receta eliminada correctamente.");
     } catch (err) {
       alert("Error al eliminar: " + err.message);
-      renderRecipeList();
     }
   };
 
@@ -256,9 +358,9 @@ document.addEventListener('DOMContentLoaded', () => {
         newArray = [newRecipeData, ...currentRecipes];
       }
 
-      const resData = await commitToGithub(isEditing ? `Editar receta: ${newRecipeData.title}` : `Añadir receta: ${newRecipeData.title}`, newArray, dbSha);
+      const resData = await commitToGithub(isEditing ? `Editar receta: ${newRecipeData.title}` : `Añadir receta: ${newRecipeData.title}`, newArray, recipesSha, RECIPES_PATH);
       
-      dbSha = resData.content.sha;
+      recipesSha = resData.content.sha;
       currentRecipes = newArray;
       
       formFeedback.textContent = isEditing ? "¡Cambios guardados con éxito!" : "¡Receta publicada con éxito!";

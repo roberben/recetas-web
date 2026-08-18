@@ -1,4 +1,5 @@
 import recipes from './data/recipes.json';
+import categories from './data/categories.json';
 
 document.addEventListener('DOMContentLoaded', () => {
   const sliderContainer = document.getElementById('sliderContainer');
@@ -6,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevBtn = document.getElementById('sliderPrev');
   const nextBtn = document.getElementById('sliderNext');
   const recipeGrid = document.getElementById('recipeGrid');
-  const filterBtns = document.querySelectorAll('.filter-btn');
+  const categoryFilters = document.getElementById('categoryFilters');
   const searchInput = document.getElementById('searchInput');
   const recipeModal = document.getElementById('recipeModal');
   const closeModalBtn = document.getElementById('closeModal');
@@ -132,6 +133,16 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   renderRecipes(recipes);
+
+  categories.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn';
+    btn.setAttribute('data-category', cat);
+    btn.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
+    categoryFilters.appendChild(btn);
+  });
+
+  const filterBtns = document.querySelectorAll('.filter-btn');
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {

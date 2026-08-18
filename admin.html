@@ -68,6 +68,17 @@
       border-color: #ef4444;
       color: #ef4444;
     }
+    .input-glass {
+      padding: 0.8rem; 
+      border-radius: 10px; 
+      background: rgba(0,0,0,0.2); 
+      border: 1px solid var(--glass-border); 
+      color: #fff;
+    }
+    .input-glass:focus {
+      outline: none;
+      border-color: var(--accent-color);
+    }
   </style>
 </head>
 <body>
@@ -93,20 +104,37 @@
   <!-- Dashboard Section -->
   <div id="dashboardSection" class="admin-container" style="max-width: 1200px; margin: 0 auto; padding-top: 2rem; display: none;">
     <div class="dashboard-header" style="width: 100%;">
-      <h2>Gestor de Recetas</h2>
+      <h2>Gestor de Contenidos</h2>
       <button id="logoutBtn" class="admin-btn outline">Desconectar</button>
     </div>
 
     <div class="dashboard-grid">
-      <!-- Recipe List Column -->
-      <div class="admin-card" style="margin-top: 0; max-width: 100%;">
-        <h3 style="margin-top: 0; margin-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem;">Publicadas</h3>
-        <div id="recipeListContainer" class="recipe-list">
-          <p style="text-align: center; color: var(--text-secondary);">Cargando recetas...</p>
+      <!-- Left Column: Recipes List & Category Manager -->
+      <div style="display: flex; flex-direction: column; gap: 2rem;">
+        <!-- Recipes -->
+        <div class="admin-card" style="margin-top: 0; max-width: 100%;">
+          <h3 style="margin-top: 0; margin-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem;">Recetas Publicadas</h3>
+          <div id="recipeListContainer" class="recipe-list" style="max-height: 400px;">
+            <p style="text-align: center; color: var(--text-secondary);">Cargando recetas...</p>
+          </div>
+        </div>
+        
+        <!-- Categories -->
+        <div class="admin-card" style="margin-top: 0; max-width: 100%;">
+          <h3 style="margin-top: 0; margin-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem;">Gestión de Categorías</h3>
+          
+          <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+            <input type="text" id="newCategoryInput" class="input-glass" placeholder="Ej. ensaladas" style="flex: 1;">
+            <button id="addCategoryBtn" class="admin-btn">Añadir</button>
+          </div>
+
+          <div id="categoryListContainer" class="recipe-list" style="max-height: 250px;">
+            <p style="text-align: center; color: var(--text-secondary);">Cargando categorías...</p>
+          </div>
         </div>
       </div>
 
-      <!-- Form Column -->
+      <!-- Right Column: Form -->
       <div class="admin-card wide" style="margin-top: 0; max-width: 100%;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem;">
           <h3 id="formTitle" style="margin: 0;">Añadir Nueva Receta</h3>
@@ -114,7 +142,6 @@
         </div>
 
         <form id="recipeForm" class="recipe-form">
-          <!-- Hidden input for recipe ID -->
           <input type="hidden" id="recipeId">
           <input type="hidden" id="existingImage">
 
@@ -126,9 +153,7 @@
             <div class="form-group">
               <label>Categoría</label>
               <select id="recipeCategory" required>
-                <option value="desayuno">Desayuno</option>
-                <option value="plato principal">Plato Principal</option>
-                <option value="postre">Postre</option>
+                <option value="">Cargando...</option>
               </select>
             </div>
           </div>
