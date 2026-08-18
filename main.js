@@ -109,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = document.createElement('article');
       card.className = 'recipe-card';
       card.style.animationDelay = `${index * 0.1}s`;
+      card.setAttribute('data-id', recipe.id);
       
       const timeIcon = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>`;
       const diffIcon = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>`;
@@ -124,12 +125,11 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
         <div class="recipe-content">
           <h3 class="recipe-title">${recipe.title}</h3>
+          <p class="recipe-desc">${recipe.description}</p>
           <div class="recipe-meta">
             <span>${timeIcon} ${recipe.time}</span>
             <span>${diffIcon} ${recipe.difficulty}</span>
           </div>
-          <p class="recipe-desc">${recipe.description}</p>
-          <button class="view-btn" data-id="${recipe.id}">Ver Receta</button>
         </div>
       `;
       recipeGrid.appendChild(card);
@@ -259,9 +259,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   document.body.addEventListener('click', (e) => {
-    const btn = e.target.closest('.view-btn, .slide-btn');
-    if (btn) {
-      const id = parseInt(btn.getAttribute('data-id'));
+    const trigger = e.target.closest('.view-btn, .slide-btn, .recipe-card');
+    if (trigger) {
+      const id = parseInt(trigger.getAttribute('data-id'));
       const recipe = recipes.find(r => r.id === id || r.id == id);
       if (recipe) openModal(recipe);
     }
