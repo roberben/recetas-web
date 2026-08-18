@@ -70,24 +70,19 @@ body {
   padding: 2rem 5%;
 }
 
-.nav {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.site-logo {
+.slider-logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
   max-height: 80px;
   width: auto;
+  z-index: 20;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   transition: transform 0.3s ease;
 }
 
-.site-logo:hover {
+.slider-logo:hover {
   transform: scale(1.05);
 }
 
