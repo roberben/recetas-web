@@ -340,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (!imgRes.ok) throw new Error("No se pudo subir la imagen.");
-        finalImageUrl = `/images/${fileName}`;
+        finalImageUrl = `./images/${fileName}`;
       } else if (isEditing && !finalImageUrl) {
         finalImageUrl = existingImage;
       }
