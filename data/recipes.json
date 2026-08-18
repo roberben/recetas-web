@@ -1,13 +1,13 @@
-export const recipes = [
+[
   {
-    id: 7,
-    title: "Codillos de Cerdo al Horno",
-    category: "plato principal",
-    time: "2 horas",
-    difficulty: "Media",
-    image: "https://images.unsplash.com/photo-1544025162-8111149c402f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Jugosos codillos asados lentamente con un glaseado de mostaza y miel, acompañados de patatas tiernas y tomates asados.",
-    ingredients: [
+    "id": 7,
+    "title": "Codillos de Cerdo al Horno",
+    "category": "plato principal",
+    "time": "2 horas",
+    "difficulty": "Media",
+    "image": "https://images.unsplash.com/photo-1544025162-8111149c402f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "description": "Jugosos codillos asados lentamente con un glaseado de mostaza y miel, acompañados de patatas tiernas y tomates asados.",
+    "ingredients": [
       "🥩 PARA LA CARNE:",
       "2 Codillos de cerdo (aprox. 700 g cada uno)",
       "Aceite de oliva virgen extra (2-3 cucharadas)",
@@ -23,7 +23,7 @@ export const recipes = [
       "3-4 patatas medianas troceadas",
       "8-10 tomates cherry"
     ],
-    instructions: [
+    "instructions": [
       "Condimenta los codillos en una bandeja con el aceite, sal y pimienta, masajeando bien la carne.",
       "Hornea a 180 ºC con 1/2 vaso de vino en el fondo durante 30 minutos (dando la vuelta a los 15 min).",
       "Mezcla la mostaza, miel, ajo, cebolla y pimentón para crear la salsa glaseada.",
@@ -32,14 +32,14 @@ export const recipes = [
     ]
   },
   {
-    id: 1,
-    title: "Pancakes de Arándanos",
-    category: "desayuno",
-    time: "20 min",
-    difficulty: "Fácil",
-    image: "https://images.unsplash.com/photo-1528207776546-3221b67f132e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Esponjosos pancakes caseros con arándanos frescos y sirope de arce.",
-    ingredients: [
+    "id": 1,
+    "title": "Pancakes de Arándanos",
+    "category": "desayuno",
+    "time": "20 min",
+    "difficulty": "Fácil",
+    "image": "https://images.unsplash.com/photo-1528207776546-3221b67f132e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "description": "Esponjosos pancakes caseros con arándanos frescos y sirope de arce.",
+    "ingredients": [
       "1 taza de harina de trigo",
       "1 cucharada de azúcar",
       "2 cucharaditas de polvo de hornear",
@@ -49,7 +49,7 @@ export const recipes = [
       "2 cucharadas de mantequilla derretida",
       "1 taza de arándanos frescos"
     ],
-    instructions: [
+    "instructions": [
       "En un bol grande, mezcla la harina, el azúcar, el polvo de hornear y la sal.",
       "Añade la leche, el huevo y la mantequilla derretida; mezcla hasta que se incorporen.",
       "Incorpora los arándanos suavemente con una espátula.",
@@ -59,14 +59,14 @@ export const recipes = [
     ]
   },
   {
-    id: 2,
-    title: "Tacos al Pastor",
-    category: "plato principal",
-    time: "60 min",
-    difficulty: "Media",
-    image: "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Auténticos tacos mexicanos marinados, servidos con piña, cilantro y cebolla.",
-    ingredients: [
+    "id": 2,
+    "title": "Tacos al Pastor",
+    "category": "plato principal",
+    "time": "60 min",
+    "difficulty": "Media",
+    "image": "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "description": "Auténticos tacos mexicanos marinados, servidos con piña, cilantro y cebolla.",
+    "ingredients": [
       "500g de carne de cerdo fileteada",
       "2 chiles guajillo (hidratados)",
       "1 cucharada de pasta de achiote",
@@ -75,7 +75,7 @@ export const recipes = [
       "Tortillas de maíz",
       "Cilantro y cebolla picados"
     ],
-    instructions: [
+    "instructions": [
       "Licúa los chiles, achiote, vinagre y especias al gusto para hacer la marinada.",
       "Marina la carne de cerdo por al menos 4 horas.",
       "Cocina la carne en una sartén caliente o parrilla hasta que esté dorada.",
@@ -85,14 +85,14 @@ export const recipes = [
     ]
   },
   {
-    id: 3,
-    title: "Tiramisú Clásico",
-    category: "postre",
-    time: "40 min",
-    difficulty: "Media",
-    image: "https://images.unsplash.com/photo-1571115177098-24de370f6120?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "El tradicional postre italiano con capas de bizcocho, café y mascarpone.",
-    ingredients: [
+    "id": 3,
+    "title": "Tiramisú Clásico",
+    "category": "postre",
+    "time": "40 min",
+    "difficulty": "Media",
+    "image": "https://images.unsplash.com/photo-1571115177098-24de370f6120?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "description": "El tradicional postre italiano con capas de bizcocho, café y mascarpone.",
+    "ingredients": [
       "3 yemas de huevo",
       "50g de azúcar",
       "250g de queso mascarpone",
@@ -101,7 +101,7 @@ export const recipes = [
       "1 taza de café espresso fuerte y frío",
       "Cacao en polvo para espolvorear"
     ],
-    instructions: [
+    "instructions": [
       "Bate las yemas con el azúcar hasta que estén pálidas y espumosas.",
       "Añade el mascarpone y mezcla hasta obtener una crema suave.",
       "En otro bol, bate la crema hasta que monte y mézclala suavemente con la crema de mascarpone.",
@@ -111,14 +111,14 @@ export const recipes = [
     ]
   },
   {
-    id: 4,
-    title: "Avena Horneada",
-    category: "desayuno",
-    time: "35 min",
-    difficulty: "Fácil",
-    image: "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Una mezcla saludable de avena, plátano, nueces y un toque de canela horneado a la perfección.",
-    ingredients: [
+    "id": 4,
+    "title": "Avena Horneada",
+    "category": "desayuno",
+    "time": "35 min",
+    "difficulty": "Fácil",
+    "image": "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "description": "Una mezcla saludable de avena, plátano, nueces y un toque de canela horneado a la perfección.",
+    "ingredients": [
       "2 tazas de avena en hojuelas",
       "1 cucharadita de polvo de hornear",
       "1 cucharadita de canela",
@@ -127,7 +127,7 @@ export const recipes = [
       "1/4 taza de miel o jarabe de arce",
       "1/2 taza de nueces picadas"
     ],
-    instructions: [
+    "instructions": [
       "Precalienta el horno a 190°C y engrasa un molde para hornear.",
       "Mezcla la avena, el polvo de hornear y la canela en un bol.",
       "En otro recipiente, mezcla los plátanos machacados, la leche y la miel.",
@@ -137,21 +137,21 @@ export const recipes = [
     ]
   },
   {
-    id: 5,
-    title: "Pasta Carbonara",
-    category: "plato principal",
-    time: "25 min",
-    difficulty: "Fácil",
-    image: "https://images.unsplash.com/photo-1612874742237-6526221588e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Clásica receta romana con guanciale, queso pecorino, yema de huevo y pimienta negra.",
-    ingredients: [
+    "id": 5,
+    "title": "Pasta Carbonara",
+    "category": "plato principal",
+    "time": "25 min",
+    "difficulty": "Fácil",
+    "image": "https://images.unsplash.com/photo-1612874742237-6526221588e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "description": "Clásica receta romana con guanciale, queso pecorino, yema de huevo y pimienta negra.",
+    "ingredients": [
       "200g de espagueti",
       "100g de guanciale (o panceta)",
       "2 yemas de huevo grandes",
       "50g de queso Pecorino Romano rallado",
       "Pimienta negra recién molida"
     ],
-    instructions: [
+    "instructions": [
       "Hierve la pasta en agua con sal hasta que esté al dente.",
       "Mientras tanto, en un bol, mezcla las yemas con el queso y abundante pimienta.",
       "Dora el guanciale en una sartén grande a fuego medio hasta que esté crujiente.",
@@ -161,14 +161,14 @@ export const recipes = [
     ]
   },
   {
-    id: 6,
-    title: "Cheesecake de Frambuesa",
-    category: "postre",
-    time: "4 horas",
-    difficulty: "Difícil",
-    image: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Suave y cremoso pastel de queso con un vibrante coulis de frambuesa por encima.",
-    ingredients: [
+    "id": 6,
+    "title": "Cheesecake de Frambuesa",
+    "category": "postre",
+    "time": "4 horas",
+    "difficulty": "Difícil",
+    "image": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "description": "Suave y cremoso pastel de queso con un vibrante coulis de frambuesa por encima.",
+    "ingredients": [
       "200g de galletas tipo graham",
       "100g de mantequilla derretida",
       "600g de queso crema a temperatura ambiente",
@@ -178,7 +178,7 @@ export const recipes = [
       "200g de frambuesas frescas",
       "2 cucharadas de azúcar para el coulis"
     ],
-    instructions: [
+    "instructions": [
       "Tritura las galletas y mézclalas con la mantequilla. Presiona la mezcla en el fondo de un molde y hornea a 180°C por 10 min.",
       "Bate el queso crema con el azúcar hasta que esté suave. Añade los huevos uno a uno y la vainilla.",
       "Vierte el relleno sobre la base enfriada y hornea a 160°C durante 45-50 min.",
@@ -186,4 +186,4 @@ export const recipes = [
       "Para el coulis, calienta las frambuesas con 2 cucharadas de azúcar hasta que se deshagan. Cuela y vierte sobre el pastel frío."
     ]
   }
-];
+]

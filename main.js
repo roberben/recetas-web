@@ -1,4 +1,4 @@
-import { recipes } from './data/recipes.js';
+import recipes from './data/recipes.json';
 
 document.addEventListener('DOMContentLoaded', () => {
   const sliderContainer = document.getElementById('sliderContainer');

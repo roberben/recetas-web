@@ -9,6 +9,66 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./admin.css">
+  <style>
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 2rem;
+      align-items: start;
+      width: 100%;
+    }
+    @media (max-width: 768px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .recipe-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-height: 700px;
+      overflow-y: auto;
+      padding-right: 0.5rem;
+    }
+    .admin-recipe-card {
+      background: rgba(0,0,0,0.2);
+      border: 1px solid var(--glass-border);
+      padding: 1rem;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .admin-recipe-card h4 {
+      margin: 0;
+      color: #fff;
+      font-size: 1rem;
+    }
+    .admin-recipe-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .btn-icon {
+      background: transparent;
+      border: 1px solid var(--glass-border);
+      color: #fff;
+      padding: 0.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .btn-icon:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    .btn-icon.delete:hover {
+      background: rgba(239, 68, 68, 0.2);
+      border-color: #ef4444;
+      color: #ef4444;
+    }
+  </style>
 </head>
 <body>
   <!-- Login Section -->
@@ -31,73 +91,89 @@
   </div>
 
   <!-- Dashboard Section -->
-  <div id="dashboardSection" class="admin-container">
-    <div class="admin-card wide">
-      <div class="dashboard-header">
-        <h2>Añadir Nueva Receta</h2>
-        <button id="logoutBtn" class="admin-btn outline">Desconectar</button>
+  <div id="dashboardSection" class="admin-container" style="max-width: 1200px; margin: 0 auto; padding-top: 2rem; display: none;">
+    <div class="dashboard-header" style="width: 100%;">
+      <h2>Gestor de Recetas</h2>
+      <button id="logoutBtn" class="admin-btn outline">Desconectar</button>
+    </div>
+
+    <div class="dashboard-grid">
+      <!-- Recipe List Column -->
+      <div class="admin-card" style="margin-top: 0; max-width: 100%;">
+        <h3 style="margin-top: 0; margin-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem;">Publicadas</h3>
+        <div id="recipeListContainer" class="recipe-list">
+          <p style="text-align: center; color: var(--text-secondary);">Cargando recetas...</p>
+        </div>
       </div>
 
-      <p style="margin-bottom: 2rem; color: var(--text-secondary);">
-        Al guardar, la receta y la foto se subirán directamente a tu repositorio <strong>roberben/recetas-web</strong>. ¡Coste 0 garantizado!
-      </p>
+      <!-- Form Column -->
+      <div class="admin-card wide" style="margin-top: 0; max-width: 100%;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem;">
+          <h3 id="formTitle" style="margin: 0;">Añadir Nueva Receta</h3>
+          <button id="cancelEditBtn" class="admin-btn secondary" style="display: none; padding: 0.4rem 1rem;">Crear Nueva</button>
+        </div>
 
-      <form id="recipeForm" class="recipe-form">
-        <div class="form-row">
-          <div class="form-group">
-            <label>Título de la receta</label>
-            <input type="text" id="recipeTitle" required>
+        <form id="recipeForm" class="recipe-form">
+          <!-- Hidden input for recipe ID -->
+          <input type="hidden" id="recipeId">
+          <input type="hidden" id="existingImage">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Título de la receta</label>
+              <input type="text" id="recipeTitle" required>
+            </div>
+            <div class="form-group">
+              <label>Categoría</label>
+              <select id="recipeCategory" required>
+                <option value="desayuno">Desayuno</option>
+                <option value="plato principal">Plato Principal</option>
+                <option value="postre">Postre</option>
+              </select>
+            </div>
           </div>
-          <div class="form-group">
-            <label>Categoría</label>
-            <select id="recipeCategory" required>
-              <option value="desayuno">Desayuno</option>
-              <option value="plato principal">Plato Principal</option>
-              <option value="postre">Postre</option>
-            </select>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Tiempo de preparación (ej. '40 min')</label>
+              <input type="text" id="recipeTime" required>
+            </div>
+            <div class="form-group">
+              <label>Dificultad</label>
+              <select id="recipeDifficulty" required>
+                <option value="Fácil">Fácil</option>
+                <option value="Media">Media</option>
+                <option value="Difícil">Difícil</option>
+              </select>
+            </div>
           </div>
-        </div>
 
-        <div class="form-row">
           <div class="form-group">
-            <label>Tiempo de preparación (ej. '40 min')</label>
-            <input type="text" id="recipeTime" required>
+            <label>Descripción corta</label>
+            <input type="text" id="recipeDescription" required>
           </div>
+
           <div class="form-group">
-            <label>Dificultad</label>
-            <select id="recipeDifficulty" required>
-              <option value="Fácil">Fácil</option>
-              <option value="Media">Media</option>
-              <option value="Difícil">Difícil</option>
-            </select>
+            <label>Imagen de la receta <span id="imageHint" style="font-weight: normal; font-size: 0.8rem;"></span></label>
+            <input type="file" id="recipeImageFile" accept="image/*" style="padding: 0; background: transparent; border: none; margin-bottom: 0.5rem;">
+            <small style="display:block; margin-bottom: 0.5rem; color: var(--text-secondary);">O pega una URL de internet en su lugar:</small>
+            <input type="text" id="recipeImageUrl" placeholder="https://ejemplo.com/foto.jpg">
           </div>
-        </div>
 
-        <div class="form-group">
-          <label>Descripción corta</label>
-          <input type="text" id="recipeDescription" required>
-        </div>
+          <div class="form-group">
+            <label>Ingredientes (Uno por línea)</label>
+            <textarea id="recipeIngredients" rows="5" required placeholder="1 taza de harina&#10;2 huevos..."></textarea>
+          </div>
 
-        <div class="form-group">
-          <label>Imagen de la receta</label>
-          <input type="file" id="recipeImageFile" accept="image/*" style="padding: 0; background: transparent; border: none; margin-bottom: 0.5rem;">
-          <small style="display:block; margin-bottom: 0.5rem; color: var(--text-secondary);">O pega una URL de internet en su lugar:</small>
-          <input type="text" id="recipeImageUrl" placeholder="https://ejemplo.com/foto.jpg">
-        </div>
+          <div class="form-group">
+            <label>Instrucciones (Una por línea)</label>
+            <textarea id="recipeInstructions" rows="5" required placeholder="Mezcla los ingredientes...&#10;Hornea a 180 grados..."></textarea>
+          </div>
 
-        <div class="form-group">
-          <label>Ingredientes (Uno por línea)</label>
-          <textarea id="recipeIngredients" rows="5" required placeholder="1 taza de harina&#10;2 huevos..."></textarea>
-        </div>
-
-        <div class="form-group">
-          <label>Instrucciones (Una por línea)</label>
-          <textarea id="recipeInstructions" rows="5" required placeholder="Mezcla los ingredientes...&#10;Hornea a 180 grados..."></textarea>
-        </div>
-
-        <button type="submit" id="saveRecipeBtn" class="admin-btn full-width">Publicar en GitHub</button>
-        <p id="formFeedback" class="success-msg"></p>
-      </form>
+          <button type="submit" id="saveRecipeBtn" class="admin-btn full-width">Publicar en GitHub</button>
+          <p id="formFeedback" class="success-msg"></p>
+        </form>
+      </div>
     </div>
   </div>
 
