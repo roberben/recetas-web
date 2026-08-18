@@ -148,46 +148,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderRecipes(recipes);
 
+  const categorySelect = document.getElementById('categorySelect');
+
   categories.forEach(cat => {
     const btn = document.createElement('button');
     btn.className = 'filter-btn';
     btn.setAttribute('data-category', cat);
     btn.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
     categoryFilters.appendChild(btn);
+
+    if (categorySelect) {
+      const option = document.createElement('option');
+      option.value = cat;
+      option.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
+      categorySelect.appendChild(option);
+    }
   });
 
   const filterBtns = document.querySelectorAll('.filter-btn');
+
+  const applyFilters = (category, searchTerm) => {
+    const filtered = recipes.filter(r => {
+      const matchesCategory = category === 'all' || 
+        (Array.isArray(r.category) ? r.category.includes(category) : r.category === category);
+      const matchesSearch = r.title.toLowerCase().includes(searchTerm) || 
+        r.description.toLowerCase().includes(searchTerm);
+      return matchesCategory && matchesSearch;
+    });
+    renderRecipes(filtered);
+  };
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const category = btn.getAttribute('data-category');
-      
-      if (category === 'all') {
-        renderRecipes(recipes);
-      } else {
-        const filtered = recipes.filter(r => {
-          if (Array.isArray(r.category)) {
-            return r.category.includes(category);
-          } else {
-            return r.category === category;
-          }
-        });
-        renderRecipes(filtered);
-      }
+      const searchTerm = searchInput.value.toLowerCase();
+      if (categorySelect) categorySelect.value = category;
+      applyFilters(category, searchTerm);
     });
   });
 
+  if (categorySelect) {
+    categorySelect.addEventListener('change', (e) => {
+      const category = e.target.value;
+      const searchTerm = searchInput.value.toLowerCase();
+      
+      filterBtns.forEach(b => {
+        if (b.getAttribute('data-category') === category) {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
+
+      applyFilters(category, searchTerm);
+    });
+  }
+
   searchInput.addEventListener('input', (e) => {
     const searchTerm = e.target.value.toLowerCase();
-    filterBtns.forEach(b => b.classList.remove('active'));
-    filterBtns[0].classList.add('active'); 
-    const filtered = recipes.filter(r => 
-      r.title.toLowerCase().includes(searchTerm) || 
-      r.description.toLowerCase().includes(searchTerm)
-    );
-    renderRecipes(filtered);
+    const activeBtn = document.querySelector('.filter-btn.active');
+    const category = activeBtn ? activeBtn.getAttribute('data-category') : 'all';
+    applyFilters(category, searchTerm);
   });
 
   // Modal Logic
