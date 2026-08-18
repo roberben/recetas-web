@@ -1,5 +1,18 @@
 [
   {
+    "id": 1787051540309,
+    "title": "Torta Esponjosa de Yogur Griego",
+    "category": [
+      "postre"
+    ],
+    "time": "1h",
+    "difficulty": "Media",
+    "description": "Un bizcocho suave, ligero y de textura aterciopelada gracias al yogur griego y a las claras a punto de nieve. Muy fácil y rápido de preparar.",
+    "image": "./images/recipe_1787051538321_TortaEsponjosadeYogurGriego.jpg",
+    "ingredients": "500 g Yogur griego natural (sin azúcar) o azucarado (ver nota de azúcar)\n4 ud Huevos (separadas las claras de las yemas)\n50 – 100 g Azúcar (ajustar según el tipo de yogur)\n40 g Maicena (almidón de maíz)\n12 g Levadura química / Polvo de hornear (aprox. ¾ de sobre)\n1 cda Esencia o extracto de vainilla\n\n💡 Ajuste de azúcar:\n\nSi usas yogur griego natural sin azúcar, añade 100 g de azúcar.\nSi usas yogur griego ya azucarado o edulcorado, reduce a 50 g de azúcar para que no quede empalagoso.",
+    "instructions": "1️⃣ Preparativos iniciales\n\nPrecalienta el horno a 180 °C con calor arriba y abajo.\n\nPrepara el molde: Coloca un círculo de papel de horno en la base de un molde de 20 cm y unta un poco de mantequilla en las paredes laterales.\n\nSepara los huevos: Separa con cuidado las yemas de las claras en dos recipientes limpios y secos.\n\n\n2️⃣ Preparar la base de yemas\n\nBlanquear yemas: En el bol con las 4 yemas, añade el azúcar y bate con varillas hasta que la mezcla adquiera un color pálido y textura cremosa.\n\nAromatizar: Agrega la cucharada de vainilla e intégrala bien.\n\nAñadir el yogur: Incorpora los 500 g de yogur griego y mezcla hasta homogeneizar.\n\nSecos: Añade la maicena y la levadura química (tamizadas con un colador) y bate suavemente hasta que no queden grumos.\n\n\n3️⃣ Montar claras e integrar\n\nPunto de nieve: Con varillas limpias, monta las 4 claras en un bol aparte hasta que formen picos firmes.\n\nUnión suave: Añade las claras montadas a la mezcla anterior en 2 o 3 tandas, mezclando con una espátula mediante movimientos envolventes (de abajo hacia arriba) para no perder el aire de la masa.\n\n\n4️⃣ Horneado y reposo\n\nVerter: Pasa la masa con cuidado al molde preparado.\n\nHornear: Introduce al horno a 180 °C durante 40 – 45 minutos.\n\nComprobación: Pincha el centro con un palillo; debe salir limpio.\n\nEnfriado: Deja templar antes de desmoldar para que la estructura se asiente perfectamente.\n\n\n💡 Consejo de degustación: Puedes espolvorear azúcar glas por encima antes de servir o acompañarla con frutos rojos frescos o una mermelada ligera."
+  },
+  {
     "id": 1787050872997,
     "title": "Crumble Casero de Manzana",
     "category": [
