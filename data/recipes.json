@@ -1,5 +1,18 @@
 [
   {
+    "id": 1787050872997,
+    "title": "Crumble Casero de Manzana",
+    "category": [
+      "postre"
+    ],
+    "time": "'30 min",
+    "difficulty": "Fácil",
+    "description": "Un postre británico tradicional servido en raciones individuales: manzanas tiernas y especiadas bajo una crujiente y dorada cobertura de migas de mantequilla.",
+    "image": "./images/recipe_1787050871128_Crumbledemanzana.jpg",
+    "ingredients": "🍏 Base de fruta:\n2 ud Manzanas (tipo Reineta, Golden o Granny Smith)\n\n1 pizca Azúcar moreno (para espolvorear la fruta)\n\nc/n Canela en polvo (al gusto)\n\n🌾 Para el crumble (cobertura crujiente):\n100 g Harina de trigo\n\n50 g Mantequilla (a temperatura ambiente / punto pomada)\n\n50 g Azúcar moreno",
+    "instructions": "1️⃣ Preparativos iniciales\n\nPrecalienta el horno a 180 °C con calor arriba y abajo.\n\nColoca 4 a 6 recipientes individuales (tipo cazuelitas o ramequines aptos para horno) sobre una bandeja de hornear.\n\n\n2️⃣ Preparar la base de manzana\n\nPela las manzanas, retira el corazón y córtalas en dados pequeños y regulares.\n\nReparte los trozos de manzana equitativamente en los recipientes individuales.\n\nCondimenta: Espolvorea por encima de la manzana un poco de azúcar moreno y canela en polvo al gusto.\n\n\n3️⃣ Preparar la masa del crumble\n\nEn un bol amplio, coloca la harina de trigo y la mantequilla a temperatura ambiente.\n\nFrota la mantequilla con la harina usando las yemas de los dedos hasta que adquiera una textura arenosa.\n\nAñade el azúcar moreno y continúa mezclando suavemente con las manos hasta conseguir una textura de migas gruesas e irregulares (no amases demasiado para que no se compacte).\n\n\n4️⃣ Montaje y horneado\n\nCubrir: Distribuye las migas del crumble por encima de la capa de manzana en cada molde, cubriéndola por completo sin presionar.\n\nHornear: Introduce los recipientes en el horno a 180 °C durante unos 15 minutos (o hasta que la superficie esté bien dorada y crujiente y la manzana tierna).\n\n\n5️⃣ Servicio\n\nSírvelo templado.\n\n💡 Consejo de degustación: El contraste perfecto se consigue acompañando cada cazuelita templada con una bola de helado de vainilla, nata montada o un chorrito de crema inglesa fría."
+  },
+  {
     "id": 1787048918912,
     "title": "Brownie Casero de Chocolate con Nueces",
     "category": [
