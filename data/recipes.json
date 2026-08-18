@@ -71,32 +71,6 @@
     ]
   },
   {
-    "id": 3,
-    "title": "Tiramisú Clásico",
-    "category": "postre",
-    "time": "40 min",
-    "difficulty": "Media",
-    "image": "https://images.unsplash.com/photo-1571115177098-24de370f6120?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    "description": "El tradicional postre italiano con capas de bizcocho, café y mascarpone.",
-    "ingredients": [
-      "3 yemas de huevo",
-      "50g de azúcar",
-      "250g de queso mascarpone",
-      "200ml de crema para batir",
-      "1 paquete de bizcochos de soletilla",
-      "1 taza de café espresso fuerte y frío",
-      "Cacao en polvo para espolvorear"
-    ],
-    "instructions": [
-      "Bate las yemas con el azúcar hasta que estén pálidas y espumosas.",
-      "Añade el mascarpone y mezcla hasta obtener una crema suave.",
-      "En otro bol, bate la crema hasta que monte y mézclala suavemente con la crema de mascarpone.",
-      "Sumerge rápidamente los bizcochos en el café y colócalos en el fondo de un molde.",
-      "Cubre con la mitad de la crema. Repite las capas de bizcochos y crema.",
-      "Refrigera por al menos 4 horas. Espolvorea con cacao antes de servir."
-    ]
-  },
-  {
     "id": 4,
     "title": "Avena Horneada",
     "category": "desayuno",
