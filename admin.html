@@ -187,13 +187,13 @@
           </div>
 
           <div class="form-group">
-            <label>Ingredientes (Uno por línea)</label>
-            <textarea id="recipeIngredients" rows="5" required placeholder="1 taza de harina&#10;2 huevos..."></textarea>
+            <label>Ingredientes (Soporta formato Markdown)</label>
+            <textarea id="recipeIngredients" rows="5" required placeholder="- 1 taza de harina&#10;- 2 huevos&#10;&#10;Puedes usar **negritas**, listas y símbolos."></textarea>
           </div>
 
           <div class="form-group">
-            <label>Instrucciones (Una por línea)</label>
-            <textarea id="recipeInstructions" rows="5" required placeholder="Mezcla los ingredientes...&#10;Hornea a 180 grados..."></textarea>
+            <label>Instrucciones (Soporta formato Markdown)</label>
+            <textarea id="recipeInstructions" rows="5" required placeholder="1. Mezcla los ingredientes...&#10;2. Hornea a 180 grados...&#10;&#10;Puedes usar Markdown aquí también."></textarea>
           </div>
 
           <button type="submit" id="saveRecipeBtn" class="admin-btn full-width">Publicar en GitHub</button>

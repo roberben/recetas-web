@@ -255,8 +255,15 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('recipeDescription').value = recipe.description;
     document.getElementById('existingImage').value = recipe.image;
     document.getElementById('recipeImageUrl').value = recipe.image;
-    document.getElementById('recipeIngredients').value = recipe.ingredients.join('\n');
-    document.getElementById('recipeInstructions').value = recipe.instructions.join('\n');
+    const formatForEditor = (data, isOrdered = false) => {
+      if (Array.isArray(data)) {
+        return data.map((item, index) => isOrdered ? `${index + 1}. ${item}` : `- ${item}`).join('\n');
+      }
+      return data || '';
+    };
+
+    document.getElementById('recipeIngredients').value = formatForEditor(recipe.ingredients, false);
+    document.getElementById('recipeInstructions').value = formatForEditor(recipe.instructions, true);
 
     document.getElementById('imageHint').textContent = "(Dejar vacío para conservar la actual)";
     
@@ -368,8 +375,8 @@ document.addEventListener('DOMContentLoaded', () => {
         difficulty: document.getElementById('recipeDifficulty').value,
         description: document.getElementById('recipeDescription').value,
         image: finalImageUrl,
-        ingredients: document.getElementById('recipeIngredients').value.split('\n').filter(i => i.trim() !== ''),
-        instructions: document.getElementById('recipeInstructions').value.split('\n').filter(i => i.trim() !== '')
+        ingredients: document.getElementById('recipeIngredients').value,
+        instructions: document.getElementById('recipeInstructions').value
       };
 
       let newArray;

@@ -181,12 +181,19 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Modal Logic
+  const formatForRender = (data, isOrdered = false) => {
+    if (Array.isArray(data)) {
+      return data.map((item, index) => isOrdered ? `${index + 1}. ${item}` : `- ${item}`).join('\n');
+    }
+    return data || '';
+  };
+
   const openModal = (recipe) => {
     const timeIcon = `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>`;
     const diffIcon = `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>`;
 
-    const ingredientsHtml = (recipe.ingredients || []).map(ing => `<li>${ing}</li>`).join('');
-    const instructionsHtml = (recipe.instructions || []).map(inst => `<li>${inst}</li>`).join('');
+    const ingredientsHtml = marked.parse(formatForRender(recipe.ingredients, false));
+    const instructionsHtml = marked.parse(formatForRender(recipe.instructions, true));
 
     modalBody.innerHTML = `
       <img src="${recipe.image}" alt="${recipe.title}" class="modal-header-img">
@@ -199,14 +206,14 @@ document.addEventListener('DOMContentLoaded', () => {
         <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.6;">${recipe.description}</p>
         
         <h3 class="modal-section-title">Ingredientes</h3>
-        <ul class="modal-list">
+        <div class="markdown-body">
           ${ingredientsHtml}
-        </ul>
+        </div>
         
         <h3 class="modal-section-title">Instrucciones</h3>
-        <ol class="modal-list steps">
+        <div class="markdown-body">
           ${instructionsHtml}
-        </ol>
+        </div>
       </div>
     `;
     document.body.style.overflow = 'hidden'; 
