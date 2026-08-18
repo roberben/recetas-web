@@ -20,6 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const newCategoryInput = document.getElementById('newCategoryInput');
   const addCategoryBtn = document.getElementById('addCategoryBtn');
 
+  const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+  const imagePreview = document.getElementById('imagePreview');
+  const recipeImageFile = document.getElementById('recipeImageFile');
+  const recipeImageUrl = document.getElementById('recipeImageUrl');
+
   let githubToken = localStorage.getItem('gh_token');
   let currentRecipes = [];
   let currentCategories = [];
@@ -198,6 +203,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  // --- IMAGE PREVIEW LOGIC ---
+  const updateImagePreview = (src) => {
+    if (src) {
+      imagePreview.src = src;
+      imagePreviewContainer.style.display = 'block';
+    } else {
+      imagePreview.src = '';
+      imagePreviewContainer.style.display = 'none';
+    }
+  };
+
+  recipeImageFile.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => updateImagePreview(e.target.result);
+      reader.readAsDataURL(file);
+    } else {
+      updateImagePreview(recipeImageUrl.value || document.getElementById('existingImage').value);
+    }
+  });
+
+  recipeImageUrl.addEventListener('input', (e) => {
+    if (recipeImageFile.files.length === 0) {
+      updateImagePreview(e.target.value || document.getElementById('existingImage').value);
+    }
+  });
+
   // --- RECIPES LOGIC ---
   const renderRecipeList = () => {
     recipeListContainer.innerHTML = '';
@@ -255,6 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('recipeDescription').value = recipe.description;
     document.getElementById('existingImage').value = recipe.image;
     document.getElementById('recipeImageUrl').value = recipe.image;
+    updateImagePreview(recipe.image);
     const formatForEditor = (data, isOrdered = false) => {
       if (Array.isArray(data)) {
         return data.map((item, index) => isOrdered ? `${index + 1}. ${item}` : `- ${item}`).join('\n');
@@ -277,6 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('recipeId').value = '';
     document.getElementById('existingImage').value = '';
     document.getElementById('imageHint').textContent = "";
+    updateImagePreview('');
     formTitle.textContent = "Añadir Nueva Receta";
     document.getElementById('saveRecipeBtn').textContent = "Publicar en GitHub";
     cancelEditBtn.style.display = 'none';
