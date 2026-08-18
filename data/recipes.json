@@ -1,5 +1,18 @@
 [
   {
+    "id": 1787015884958,
+    "title": "Tarta de los Tres Chocolates",
+    "category": [
+      "postre"
+    ],
+    "time": "1h '30min",
+    "difficulty": "Media",
+    "description": "Un clásico de la repostería casera: cremosa, vistosa, equilibrada y sin necesidad de horno.",
+    "image": "./images/recipe_1787015859961_Tartadelos3chocolates.jpg",
+    "ingredients": "🛒 Ingredientes\n🍪 Base de galleta\n200 g Galletas tipo María o Digestive\n\n80 g Mantequilla derretida\n\n🍫 Capa 1: Chocolate Negro\n150 g Chocolate negro para postres (50% – 70% cacao)\n\n200 ml Nata líquida para montar (35% M.G.)\n\n200 ml Leche entera\n\n1 sobre Cuajada en polvo (12 g)\n\n40 g Azúcar (opcional)\n\n🍫 Capa 2: Chocolate con Leche\n150 g Chocolate con leche para postres\n\n200 ml Nata líquida para montar (35% M.G.)\n\n200 ml Leche entera\n\n1 sobre Cuajada en polvo (12 g)\n\n20 g Azúcar (opcional)\n\n🍫 Capa 3: Chocolate Blanco\n150 g Chocolate blanco para postres\n\n200 ml Nata líquida para montar (35% M.G.)\n\n200 ml Leche entera\n\n1 sobre Cuajada en polvo (12 g)\n(No requiere azúcar adicional)\n\n",
+    "instructions": "1️⃣ Preparación de la Base\n\nTritura las galletas con picadora o rodillo hasta obtener un polvo fino.\n\nMezcla con la mantequilla derretida hasta lograr una textura de arena húmeda.\n\nCubre la base del molde desmoldable presionando con el dorso de una cuchara para que quede compacta y lisa.\n\n🧊 Guarda en el frigorífico mientras preparas la primera capa.\n\n\n2️⃣ Capa de Chocolate Negro\n\nSepara 50 ml de leche en un vaso y disuelve completamente el sobre de cuajada (sin grumos).\n\nEn un cazo a fuego medio, calienta los 150 ml de leche restantes, los 200 ml de nata, el chocolate negro troceado y el azúcar.\n\nRemueve hasta que el chocolate se funda por completo.\n\nAñade la leche con la cuajada disuelta y mezcla bien.\n\nLleva a ebullición a fuego suave sin dejar de remover. En cuanto empiece a hervir, retira de inmediato del fuego.\n\nVierte con cuidado sobre la base de galleta.\n\n❄️ Refrigera 15–20 minutos hasta que la superficie esté cuajada.\n\n\n3️⃣ Capa de Chocolate con Leche\n\nDisuelve el segundo sobre de cuajada en 50 ml de leche.\n\nCalienta en el cazo los 150 ml de leche, la nata, el chocolate con leche y el azúcar.\n\nAgrega la cuajada y lleva a ebullición removiendo continuamente.\n\n⚡ Paso clave: Raya suavemente la superficie de la capa de chocolate negro con las puntas de un tenedor.\n\nVierte la mezcla caliente lentamente, dejándola caer sobre el dorso de una cuchara para no perforar la capa inferior.\n\n❄️ Refrigera otros 15–20 minutos.\n\n\n4️⃣ Capa de Chocolate Blanco\n\nDisuelve el último sobre de cuajada en 50 ml de leche.\n\nFunde a fuego suave los 150 ml de leche, la nata y el chocolate blanco.\n\nIncorpora la cuajada y lleva a hervor sin parar de remover.\n\nRaya la superficie de la capa de chocolate con leche con el tenedor.\n\nVierte suavemente con la ayuda de la cuchara invertida.\n\n⏳ Reposo y Presentación\n\n❄️ Enfriado: Deja templar a temperatura ambiente durante unos 30 minutos y pasa a la nevera por un mínimo de 6 horas (lo ideal es de un día para otro).\n\n🔪 Desmoldado: Pasa con cuidado una espátula o cuchillo fino por el contorno interior del aro antes de abrir el molde para un acabado perfecto.\n\n💡 Trucos de éxito:\n\nRayado con tenedor: Imprescindible para que las capas queden unidas y no resbalen al cortarla.\n\nLa cuchara invertida: Rompe la fuerza de la caída del líquido caliente y evita cráteres entre capas.\n\nTemperatura: Vierte cada capa bien caliente sobre la anterior semicuajada para sellar la unión entre ambas."
+  },
+  {
     "id": 7,
     "title": "Codillos de Cerdo al Horno",
     "category": "plato principal",
