@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         if (res.ok) {
           loginSection.classList.remove('active');
-          dashboardSection.style.display = 'flex';
+          dashboardSection.style.display = 'block';
           loadData();
           return;
         }
