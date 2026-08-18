@@ -96,31 +96,5 @@
       "Pica la carne finamente y sírvela sobre tortillas calientes.",
       "Acompaña con piña, cilantro, cebolla y tu salsa favorita."
     ]
-  },
-  {
-    "id": 4,
-    "title": "Avena Horneada",
-    "category": "desayuno",
-    "time": "35 min",
-    "difficulty": "Fácil",
-    "image": "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    "description": "Una mezcla saludable de avena, plátano, nueces y un toque de canela horneado a la perfección.",
-    "ingredients": [
-      "2 tazas de avena en hojuelas",
-      "1 cucharadita de polvo de hornear",
-      "1 cucharadita de canela",
-      "2 plátanos maduros machacados",
-      "2 tazas de leche (o bebida vegetal)",
-      "1/4 taza de miel o jarabe de arce",
-      "1/2 taza de nueces picadas"
-    ],
-    "instructions": [
-      "Precalienta el horno a 190°C y engrasa un molde para hornear.",
-      "Mezcla la avena, el polvo de hornear y la canela en un bol.",
-      "En otro recipiente, mezcla los plátanos machacados, la leche y la miel.",
-      "Combina los ingredientes secos con los húmedos e incorpora las nueces.",
-      "Vierte la mezcla en el molde y hornea durante 25-30 minutos hasta que el centro esté firme.",
-      "Deja enfriar unos minutos antes de servir."
-    ]
   }
 ]
