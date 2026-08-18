@@ -146,31 +146,5 @@
       "Añade la mezcla de huevo y queso a la pasta, removiendo rápidamente. Agrega agua de cocción poco a poco para formar una salsa cremosa.",
       "Sirve inmediatamente con más queso y pimienta."
     ]
-  },
-  {
-    "id": 6,
-    "title": "Cheesecake de Frambuesa",
-    "category": "postre",
-    "time": "4 horas",
-    "difficulty": "Difícil",
-    "image": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    "description": "Suave y cremoso pastel de queso con un vibrante coulis de frambuesa por encima.",
-    "ingredients": [
-      "200g de galletas tipo graham",
-      "100g de mantequilla derretida",
-      "600g de queso crema a temperatura ambiente",
-      "150g de azúcar",
-      "3 huevos",
-      "1 cucharadita de extracto de vainilla",
-      "200g de frambuesas frescas",
-      "2 cucharadas de azúcar para el coulis"
-    ],
-    "instructions": [
-      "Tritura las galletas y mézclalas con la mantequilla. Presiona la mezcla en el fondo de un molde y hornea a 180°C por 10 min.",
-      "Bate el queso crema con el azúcar hasta que esté suave. Añade los huevos uno a uno y la vainilla.",
-      "Vierte el relleno sobre la base enfriada y hornea a 160°C durante 45-50 min.",
-      "Deja enfriar el cheesecake en el horno apagado por 1 hora, luego refrigera por al menos 4 horas.",
-      "Para el coulis, calienta las frambuesas con 2 cucharadas de azúcar hasta que se deshagan. Cuela y vierte sobre el pastel frío."
-    ]
   }
 ]
