@@ -230,6 +230,34 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target === recipeModal) closeModal();
   });
 
+  // About Modal Logic
+  const aboutModal = document.getElementById('aboutModal');
+  const closeAboutModal = document.getElementById('closeAboutModal');
+  const siteLogo = document.querySelector('.slider-logo');
+
+  if (siteLogo) {
+    siteLogo.addEventListener('click', () => {
+      document.body.style.overflow = 'hidden';
+      aboutModal.classList.add('active');
+    });
+  }
+
+  if (closeAboutModal) {
+    closeAboutModal.addEventListener('click', () => {
+      document.body.style.overflow = 'auto';
+      aboutModal.classList.remove('active');
+    });
+  }
+
+  if (aboutModal) {
+    aboutModal.addEventListener('click', (e) => {
+      if (e.target === aboutModal) {
+        document.body.style.overflow = 'auto';
+        aboutModal.classList.remove('active');
+      }
+    });
+  }
+
   document.body.addEventListener('click', (e) => {
     const btn = e.target.closest('.view-btn, .slide-btn');
     if (btn) {
