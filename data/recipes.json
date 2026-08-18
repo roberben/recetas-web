@@ -122,29 +122,5 @@
       "Vierte la mezcla en el molde y hornea durante 25-30 minutos hasta que el centro esté firme.",
       "Deja enfriar unos minutos antes de servir."
     ]
-  },
-  {
-    "id": 5,
-    "title": "Pasta Carbonara",
-    "category": "plato principal",
-    "time": "25 min",
-    "difficulty": "Fácil",
-    "image": "https://images.unsplash.com/photo-1612874742237-6526221588e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    "description": "Clásica receta romana con guanciale, queso pecorino, yema de huevo y pimienta negra.",
-    "ingredients": [
-      "200g de espagueti",
-      "100g de guanciale (o panceta)",
-      "2 yemas de huevo grandes",
-      "50g de queso Pecorino Romano rallado",
-      "Pimienta negra recién molida"
-    ],
-    "instructions": [
-      "Hierve la pasta en agua con sal hasta que esté al dente.",
-      "Mientras tanto, en un bol, mezcla las yemas con el queso y abundante pimienta.",
-      "Dora el guanciale en una sartén grande a fuego medio hasta que esté crujiente.",
-      "Escurre la pasta (reservando 1/2 taza del agua de cocción) y añádela a la sartén con el guanciale fuera del fuego.",
-      "Añade la mezcla de huevo y queso a la pasta, removiendo rápidamente. Agrega agua de cocción poco a poco para formar una salsa cremosa.",
-      "Sirve inmediatamente con más queso y pimienta."
-    ]
   }
 ]
