@@ -72,43 +72,71 @@ body {
 
 .nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  margin-bottom: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.site-logo {
+  max-height: 80px;
+  width: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.site-logo:hover {
+  transform: scale(1.05);
+}
+
+/* --- CENTERED SEARCH BAR --- */
+.search-container-centered {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
-  background: rgba(15, 23, 42, 0.5);
-  padding: 1rem 2rem;
-  border-radius: 20px;
+  border-radius: 30px;
+  padding: 0.5rem 1.5rem;
   border: 1px solid var(--glass-border);
+  width: 100%;
+  max-width: 600px;
+  transition: all 0.3s ease;
+  color: white;
 }
 
-.logo {
-  font-size: 1.8rem;
-  font-weight: 800;
-  letter-spacing: -1px;
+.search-bar svg {
+  margin-right: 10px;
+  opacity: 0.7;
 }
 
-.logo span {
-  color: var(--accent-color);
+.search-bar:focus-within {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 15px var(--accent-glow);
 }
 
 .search-bar input {
-  padding: 0.8rem 1.5rem;
-  border-radius: 30px;
-  border: 1px solid var(--glass-border);
-  background: rgba(255, 255, 255, 0.05);
-  color: white;
+  background: transparent;
+  border: none;
+  color: #fff;
+  padding: 0.5rem 0;
+  width: 100%;
+  outline: none;
   font-family: inherit;
-  font-size: 1rem;
-  width: 250px;
-  transition: all 0.3s ease;
+  font-size: 1.1rem;
 }
 
-.search-bar input:focus {
-  outline: none;
-  border-color: var(--accent-color);
-  box-shadow: 0 0 15px var(--accent-glow);
-  background: rgba(255, 255, 255, 0.1);
+.search-bar input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .hero {
