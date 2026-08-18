@@ -1,5 +1,18 @@
 [
   {
+    "id": 1787048918912,
+    "title": "Brownie Casero de Chocolate con Nueces",
+    "category": [
+      "postre"
+    ],
+    "time": "1h '15 min",
+    "difficulty": "Media",
+    "description": "El clásico brownie con exterior crujiente, interior tierno y húmedo, aromatizado con vainilla y canela y con el toque crujiente de las nueces.",
+    "image": "./images/recipe_1787048916774_Browniecaser.jpg",
+    "ingredients": "185 g Chocolate para fundir (para postres)\n125 g Mantequilla\n150 g Azúcar\n2 ud Huevos grandes (L)\n75 g Harina de trigo\n75 g Nueces troceadas\n1 cda Canela en polvo\n1 cda Esencia o extracto de vainilla",
+    "instructions": "1️⃣ Preparativos iniciales\n\nPrecalienta el horno a 180 °C con calor arriba y abajo.\n\nPrepara el molde: Engrasa con un poco de mantequilla y espolvorea harina (o fórralo con papel vegetal) un molde de aproximadamente 22 cm.\n\n\n2️⃣ Masa del brownie\n\nFundir chocolate y mantequilla: En un cazo a fuego muy suave o en el microondas (en tandas de 30 segundos), funde el chocolate troceado junto con la mantequilla. Remueve hasta obtener una mezcla lisa y homogénea; deja templar unos minutos.\n\nBatir huevos y azúcar: En un bol amplio, bate los 2 huevos junto con el azúcar hasta que la mezcla empiece a blanquear y coja textura cremosa.\n\nUnir con el chocolate: Vierte la mezcla de chocolate y mantequilla derretida sobre los huevos batidos, removiendo con suavidad para integrarlo todo.\n\nIncorporar secos y aromas: Añade la harina previamente tamizada con un colador, la cucharada de canela y la cucharada de vainilla. Mezcla con una espátula mediante movimientos envolventes hasta que no queden restos de harina.\n\n\n3️⃣ Montaje y horneado\n\nLlenar el molde: Vierte la masa en el molde preparado y alisa la superficie.\n\nAñadir las nueces: Reparte las nueces troceadas por toda la superficie (puedes hundir ligeramente algunas con la espátula para que queden repartidas por el interior).\n\nHornear: Introduce al horno a 180 °C durante 25 minutos.\n\nComprobación: Pincha el centro con un palillo o brocheta. En el brownie no debe salir completamente seco: debe salir con unas pocas migas húmedas pegadas (si sale masa totalmente líquida, déjalo unos 3–5 minutos más).\n\n\n4️⃣ Enfriado y corte\n\nDeja templar dentro del molde antes de desmoldar y córtalo en cuadrados individuales para servir.\n\n💡 Consejo de degustación: Sírvelo ligeramente tibio, acompañado de una bola de helado de vainilla para crear el contraste clásico frío-caliente."
+  },
+  {
     "id": 1787020303018,
     "title": "Tarta Guinness con Crema de Queso",
     "category": [
