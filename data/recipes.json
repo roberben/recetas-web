@@ -1,5 +1,18 @@
 [
   {
+    "id": 1787070256832,
+    "title": "Gazpacho Tradicional Andaluz",
+    "category": [
+      "primero"
+    ],
+    "time": "'10 min",
+    "difficulty": "Fácil",
+    "description": "Una sopa fría clásica, refrescante, saludable y cargada de vitaminas, perfecta para servir muy fría en los días calurosos.",
+    "image": "./images/recipe_1787070254305_Gazpacho.jpg",
+    "ingredients": "1 kg Tomates maduros (tipo pera)\n50 g Pimiento verde (tipo italiano)\n50 g Pimiento rojo\n70 g Pepino (pelado o parcialmente pelado)\n40 g Cebolla\n2 dientes Ajo (retira el germen central si prefieres un sabor más suave)\n50 g Aceite de oliva virgen extra\n30 g Vinagre (de vino blanco o de Jerez)\n250 g Agua fría\nc/n Sal (al gusto)",
+    "instructions": "1️⃣ Preparar las hortalizas\n\nLava bien los tomates, los pimientos y el pepino.\n\nTrocea los tomates (si quieres un resultado extrafino sin necesidad de colar después, pélalos previamente).\n\nPela el trozo de cebolla, los dientes de ajo y retira las semillas y partes blancas de los pimientos.\n\n\n2️⃣ Primer triturado y emulsión\n\nColoca en una olla honda o en el vaso de la batidora todos los ingredientes troceados: los tomates, los pimientos, el pepino, la cebolla, los ajos, el aceite de oliva, el vinagre y la sal (deja el agua reservada).\n\nTritura a máxima potencia durante varios minutos hasta que las verduras queden completamente desechas y el aceite haya emulsionado la mezcla.\n\n\n3️⃣ Añadir el agua y afinar textura\n\nVierte los 250 g de agua fría sobre la mezcla triturada.\n\nContinúa batiendo a velocidad alta durante 1 o 2 minutos más, hasta obtener una textura completamente homogénea, lisa y sedosa.\n\nOpcional: Pasa el gazpacho por un colador o pasapurés fino si prefieres una textura completamente libre de restos de pieles o semillas.\n\n\n4️⃣ Enfriado y servicio\n\nPrueba el punto de sal y vinagre y ajusta si es necesario.\n\nGuarda en la nevera durante al menos 2 horas antes de consumir.\n\n\n💡 Consejo de degustación: Sírvelo bien frío acompañado de una guarnición tradicional de tropezones finamente picados (pepino, pimiento, tomate y picatostes de pan) y un hilo de aceite de oliva virgen extra por encima."
+  },
+  {
     "id": 1787069906985,
     "title": "Paté Casero de Tres Quesos",
     "category": [
