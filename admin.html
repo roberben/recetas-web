@@ -114,6 +114,14 @@
         <!-- Recipes -->
         <div class="admin-card" style="margin-top: 0; max-width: 100%;">
           <h3 style="margin-top: 0; margin-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem;">Recetas Publicadas</h3>
+          
+          <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
+            <input type="text" id="adminSearchInput" class="input-glass" placeholder="Buscar receta..." style="flex: 2; min-width: 150px;">
+            <select id="adminCategoryFilter" class="input-glass" style="flex: 1; min-width: 100px;">
+              <option value="all">Todas</option>
+            </select>
+          </div>
+
           <div id="recipeListContainer" class="recipe-list" style="max-height: 400px;">
             <p style="text-align: center; color: var(--text-secondary);">Cargando recetas...</p>
           </div>

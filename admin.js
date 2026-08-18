@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const recipeImageFile = document.getElementById('recipeImageFile');
   const recipeImageUrl = document.getElementById('recipeImageUrl');
 
+  const adminSearchInput = document.getElementById('adminSearchInput');
+  const adminCategoryFilter = document.getElementById('adminCategoryFilter');
+
   let githubToken = localStorage.getItem('gh_token');
   let currentRecipes = [];
   let currentCategories = [];
@@ -121,7 +124,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- CATEGORIES LOGIC ---
   const populateCategorySelect = () => {
     recipeCategoriesContainer.innerHTML = '';
+    
+    adminCategoryFilter.innerHTML = '<option value="all">Todas</option>';
+
     currentCategories.forEach(cat => {
+      // For the form checkboxes
       const label = document.createElement('label');
       label.className = 'checkbox-label';
       label.innerHTML = `
@@ -129,6 +136,12 @@ document.addEventListener('DOMContentLoaded', () => {
         ${cat}
       `;
       recipeCategoriesContainer.appendChild(label);
+      
+      // For the list filter dropdown
+      const opt = document.createElement('option');
+      opt.value = cat;
+      opt.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
+      adminCategoryFilter.appendChild(opt);
     });
   };
 
@@ -234,12 +247,30 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- RECIPES LOGIC ---
   const renderRecipeList = () => {
     recipeListContainer.innerHTML = '';
-    if (currentRecipes.length === 0) {
-      recipeListContainer.innerHTML = '<p style="color: var(--text-secondary);">No hay recetas publicadas.</p>';
+    
+    const searchTerm = adminSearchInput.value.toLowerCase();
+    const filterCat = adminCategoryFilter.value;
+
+    const filteredRecipes = currentRecipes.filter(recipe => {
+      const matchesSearch = recipe.title.toLowerCase().includes(searchTerm) || (recipe.description && recipe.description.toLowerCase().includes(searchTerm));
+      
+      let matchesCat = true;
+      if (filterCat !== 'all') {
+        if (Array.isArray(recipe.category)) {
+          matchesCat = recipe.category.includes(filterCat);
+        } else {
+          matchesCat = recipe.category === filterCat;
+        }
+      }
+      return matchesSearch && matchesCat;
+    });
+
+    if (filteredRecipes.length === 0) {
+      recipeListContainer.innerHTML = '<p style="color: var(--text-secondary);">No se encontraron recetas.</p>';
       return;
     }
 
-    currentRecipes.forEach(recipe => {
+    filteredRecipes.forEach(recipe => {
       const card = document.createElement('div');
       card.className = 'admin-recipe-card';
       card.innerHTML = `
@@ -266,6 +297,9 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.addEventListener('click', (e) => deleteRecipe(e.currentTarget.getAttribute('data-id')));
     });
   };
+
+  adminSearchInput.addEventListener('input', renderRecipeList);
+  adminCategoryFilter.addEventListener('change', renderRecipeList);
 
   const editRecipe = (id) => {
     const recipe = currentRecipes.find(r => r.id == id);
