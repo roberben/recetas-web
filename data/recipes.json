@@ -1,5 +1,18 @@
 [
   {
+    "id": 1787016753429,
+    "title": "Galletas de Avena Caseras",
+    "category": [
+      "desayuno"
+    ],
+    "time": "'30 min",
+    "difficulty": "Fácil",
+    "description": "Una receta deliciosa, rápida y saludable para disfrutar de unas galletas crujientes por fuera y tiernas por dentro.",
+    "image": "https://images.unsplash.com/photo-1495195134817-aeb325a55b65?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "ingredients": "**Secos:**\n\n230 g de copos de avena\n100 g de harina de trigo\n150 g de azúcar moreno\n½ cucharadita de levadura química (polvo para hornear)\n1 pizca de sal\n\n**húmedos / líquidos:**\n\n2 huevos medianos\n150 ml de aceite de oliva (suave)\n1 cucharadita de esencia o extracto de vainilla",
+    "instructions": "Precalentar el horno: Precalienta el horno a 180 °C con calor arriba y abajo. Prepara una bandeja de horno cubierta con papel vegetal o papel para hornear.\n\nMezclar los ingredientes secos: En un bol grande, añade los copos de avena, la harina, el azúcar moreno, la levadura química y la pizca de sal. Remueve bien para que todos los elementos secos se integren de forma homogénea.\n\nMezclar los ingredientes líquidos: En otro bol aparte, bate ligeramente los huevos y mézclalos con los 150 ml de aceite de oliva y un chorrito de esencia de vainilla.\n\nIntegrar la masa: Vierte la mezcla líquida sobre el bol de los ingredientes secos. Con la ayuda de una espátula o cuchara de madera, remueve y combina todo hasta obtener una masa uniforme y compacta.\n\nFormar las galletas: Con las manos, toma porciones de masa y forma bolitas del tamaño de una nuez. Ve colocándolas en la bandeja de horno, dejando un par de centímetros de separación entre ellas. Aplástalas ligeramente con la palma de la mano o con la parte trasera de una cuchara si prefieres galletas más planas.\n\nHornear: Introduce la bandeja en el horno a 180 °C durante unos 12 minutos, o hasta que veas que los bordes empiezan a adquirir un bonito tono dorado.\n\nEnfriar y servir: Saca la bandeja del horno y deja reposar las galletas unos 5 minutos en la propia bandeja (estarán tiernas al salir). Después, pásalas con cuidado a una rejilla para que se enfríen por completo y alcancen su textura crujiente.\n\n💡 Consejos adicionales\nPuedes añadir un toque extra incorporando chips de chocolate, frutos secos picados (como nueces) o una pizca de canela en polvo a los ingredientes secos.\n\nGuárdalas en un recipiente hermético o lata metálica para que se mantengan crujientes durante varios días."
+  },
+  {
     "id": 1787015884958,
     "title": "Tarta de los Tres Chocolates",
     "category": [
