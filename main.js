@@ -198,7 +198,12 @@ document.addEventListener('DOMContentLoaded', () => {
     return data || '';
   };
 
+  let currentRecipeForShare = null;
+
   const openModal = (recipe) => {
+    currentRecipeForShare = recipe;
+    history.pushState(null, '', '?id=' + recipe.id);
+
     const timeIcon = `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>`;
     const diffIcon = `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>`;
 
@@ -233,6 +238,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeModal = () => {
     document.body.style.overflow = 'auto'; 
     recipeModal.classList.remove('active');
+    history.pushState(null, '', window.location.pathname);
+    const shareMenu = document.getElementById('shareMenu');
+    if (shareMenu) shareMenu.classList.remove('active');
   };
 
   closeModalBtn.addEventListener('click', closeModal);
@@ -269,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   document.body.addEventListener('click', (e) => {
-    if (e.target.closest('.slider-logo, .slider-arrow, .dot, .close-modal')) return;
+    if (e.target.closest('.slider-logo, .slider-arrow, .dot, .close-modal, .share-btn, .share-menu')) return;
 
     const trigger = e.target.closest('.view-btn, .slide-btn, .recipe-card, .slide');
     if (trigger) {
@@ -278,4 +286,69 @@ document.addEventListener('DOMContentLoaded', () => {
       if (recipe) openModal(recipe);
     }
   });
+
+  // Deep Linking & Share Logic
+  const shareBtn = document.getElementById('shareBtn');
+  const shareMenu = document.getElementById('shareMenu');
+  const shareWhatsapp = document.getElementById('shareWhatsapp');
+  const shareEmail = document.getElementById('shareEmail');
+  const shareCopy = document.getElementById('shareCopy');
+
+  if (shareBtn && shareMenu) {
+    shareBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      shareMenu.classList.toggle('active');
+    });
+    document.addEventListener('click', (e) => {
+      if (!shareMenu.contains(e.target) && !shareBtn.contains(e.target)) {
+        shareMenu.classList.remove('active');
+      }
+    });
+  }
+
+  if (shareWhatsapp) {
+    shareWhatsapp.addEventListener('click', () => {
+      if (!currentRecipeForShare) return;
+      const url = window.location.href;
+      const text = `¡Mira esta increíble receta de ${currentRecipeForShare.title}! 🍽️\n${url}`;
+      window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
+      shareMenu.classList.remove('active');
+    });
+  }
+
+  if (shareEmail) {
+    shareEmail.addEventListener('click', () => {
+      if (!currentRecipeForShare) return;
+      const url = window.location.href;
+      const subject = `Receta: ${currentRecipeForShare.title}`;
+      const body = `Hola,\n\nTe comparto esta deliciosa receta de ROLA: ${currentRecipeForShare.title}\n\nPuedes verla aquí:\n${url}`;
+      window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      shareMenu.classList.remove('active');
+    });
+  }
+
+  if (shareCopy) {
+    shareCopy.addEventListener('click', () => {
+      const url = window.location.href;
+      navigator.clipboard.writeText(url).then(() => {
+        const originalText = shareCopy.innerHTML;
+        shareCopy.innerHTML = '<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg> ¡Copiado!';
+        setTimeout(() => {
+          shareCopy.innerHTML = originalText;
+          shareMenu.classList.remove('active');
+        }, 2000);
+      });
+    });
+  }
+
+  // Handle URL on load
+  const urlParams = new URLSearchParams(window.location.search);
+  const recipeIdParam = urlParams.get('id');
+  if (recipeIdParam) {
+    const id = parseInt(recipeIdParam);
+    const recipe = recipes.find(r => r.id === id || r.id == id);
+    if (recipe) {
+      setTimeout(() => openModal(recipe), 100);
+    }
+  }
 });

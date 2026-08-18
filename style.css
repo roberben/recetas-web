@@ -383,28 +383,89 @@ body {
   transform: translateY(0) scale(1);
 }
 
-.close-modal {
+.modal-header-actions {
   position: absolute;
   top: 15px;
   right: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 20;
+}
+
+.share-container {
+  position: relative;
+}
+
+.share-btn, .close-modal {
   background: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
-  font-size: 2rem;
+  font-size: 1.5rem;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
-  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.3s;
+  transition: all 0.3s;
 }
 
-.close-modal:hover {
+.share-btn:hover, .close-modal:hover {
   background: var(--accent-color);
   color: black;
+  transform: scale(1.1);
+}
+
+.close-modal {
+  font-size: 2rem;
+}
+
+.share-menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 200px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.share-menu.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+.share-option {
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: background 0.3s;
+  text-align: left;
+}
+
+.share-option:hover {
+  background: rgba(255,255,255,0.1);
+  color: var(--accent-color);
 }
 
 .modal-header-img {
