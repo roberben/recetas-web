@@ -34,6 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
   let recipesSha = '';
   let categoriesSha = '';
 
+  const getAdminImageUrl = (imagePath) => {
+    if (imagePath && imagePath.startsWith('./images/')) {
+      return `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/main/public/images/${imagePath.replace('./images/', '')}`;
+    }
+    return imagePath;
+  };
+
   const checkAuth = async () => {
     if (githubToken) {
       try {
@@ -234,13 +241,13 @@ document.addEventListener('DOMContentLoaded', () => {
       reader.onload = (e) => updateImagePreview(e.target.result);
       reader.readAsDataURL(file);
     } else {
-      updateImagePreview(recipeImageUrl.value || document.getElementById('existingImage').value);
+      updateImagePreview(getAdminImageUrl(recipeImageUrl.value || document.getElementById('existingImage').value));
     }
   });
 
   recipeImageUrl.addEventListener('input', (e) => {
     if (recipeImageFile.files.length === 0) {
-      updateImagePreview(e.target.value || document.getElementById('existingImage').value);
+      updateImagePreview(getAdminImageUrl(e.target.value || document.getElementById('existingImage').value));
     }
   });
 
@@ -275,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
       card.className = 'admin-recipe-card';
       card.innerHTML = `
         <div style="display:flex; align-items:center; gap: 10px;">
-          <img src="${recipe.image}" style="width: 40px; height: 40px; border-radius: 5px; object-fit: cover;">
+          <img src="${getAdminImageUrl(recipe.image)}" style="width: 40px; height: 40px; border-radius: 5px; object-fit: cover;">
           <h4>${recipe.title}</h4>
         </div>
         <div class="admin-recipe-actions">
@@ -322,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('recipeDescription').value = recipe.description;
     document.getElementById('existingImage').value = recipe.image;
     document.getElementById('recipeImageUrl').value = recipe.image;
-    updateImagePreview(recipe.image);
+    updateImagePreview(getAdminImageUrl(recipe.image));
     const formatForEditor = (data, isOrdered = false) => {
       if (Array.isArray(data)) {
         return data.map((item, index) => isOrdered ? `${index + 1}. ${item}` : `- ${item}`).join('\n');
