@@ -45,33 +45,6 @@
     ]
   },
   {
-    "id": 1,
-    "title": "Pancakes de Arándanos",
-    "category": "desayuno",
-    "time": "20 min",
-    "difficulty": "Fácil",
-    "image": "https://images.unsplash.com/photo-1528207776546-3221b67f132e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    "description": "Esponjosos pancakes caseros con arándanos frescos y sirope de arce.",
-    "ingredients": [
-      "1 taza de harina de trigo",
-      "1 cucharada de azúcar",
-      "2 cucharaditas de polvo de hornear",
-      "1/2 cucharadita de sal",
-      "1 taza de leche",
-      "1 huevo",
-      "2 cucharadas de mantequilla derretida",
-      "1 taza de arándanos frescos"
-    ],
-    "instructions": [
-      "En un bol grande, mezcla la harina, el azúcar, el polvo de hornear y la sal.",
-      "Añade la leche, el huevo y la mantequilla derretida; mezcla hasta que se incorporen.",
-      "Incorpora los arándanos suavemente con una espátula.",
-      "Calienta una sartén a fuego medio y engrásala ligeramente.",
-      "Vierte porciones de masa en la sartén y cocina hasta que salgan burbujas en la superficie.",
-      "Voltea y cocina hasta que estén dorados. Sirve con sirope de arce."
-    ]
-  },
-  {
     "id": 2,
     "title": "Tacos al Pastor",
     "category": "plato principal",
