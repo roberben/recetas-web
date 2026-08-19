@@ -1,5 +1,18 @@
 [
   {
+    "id": 1787140366624,
+    "title": "Pollo al Curry",
+    "category": [
+      "plato principal"
+    ],
+    "time": "1h",
+    "difficulty": "Fácil",
+    "description": "Una receta aromática, llena de sabor y muy fácil de preparar. La mezcla de especias junto con el tomate y la leche de coco crea una salsa suave, espesa y deliciosa.",
+    "image": "https://images.unsplash.com/photo-1495195134817-aeb325a55b65?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "ingredients": "Base y carne:\n\n🐔 Pechuga de pollo: Media pechuga (troceada en dados)\n\n🧅 Cebolla o cebolleta: 1 unidad (picada)\n\n🧄 Ajo: 1 diente (picado)\n\n🫒 Aceite de oliva: 2-3 cucharadas\n\n🧂 Sal: Al gusto\n\nSalsa y aromáticos:\n\n🍅 Tomate frito o triturado: 2 cucharadas soperas\n\n🥥 Leche de coco: 1 lata/brik (o leche normal)\n\n🟡 Curry en polvo: 1 cucharada\n\n🟡 Cúrcuma: 1 cucharada\n\n🟤 Comino en polvo: 1 cucharada\n\n🟤 Jengibre: 1 cucharada (rallado o en polvo)\n\n🧂 Pimienta negra: Al gusto\n\nPara acompañar y decorar:\n\n🌾 Arroz basmati: Cocido (para acompañar)\n\n🌿 Cilantro o perejil fresco: Picado (para servir)\n",
+    "instructions": "1. 🔪 Preparación de ingredientes (Mise en place)\n\nCorta la pechuga de pollo en dados de tamaño bocado.\n\nPica la cebolla (o cebolleta) y el diente de ajo muy finos.\n\nEn un cuenco pequeño, junta todas las especias: curry, cúrcuma, comino, jengibre y pimienta negra.\n\n2. 🧅 Pochar la base aromática\n\nCalienta un buen chorro de aceite en una sartén grande o cazuela a fuego medio.\n\nAñade la cebolla y el ajo con una pizca de sal.\n\nPocha hasta que la cebolla esté transparente y tierna.\n\n3. 🟡 Tostar las especias\n\nIncorpora la mezcla de especias directamente sobre el sofrito de cebolla y ajo.\n\nRemueve continuamente durante 1 minuto a fuego suave para que liberen todos sus aromas sin quemarse.\n\n4. 🍗 Dorar el pollo y añadir el tomate\n\nSube el fuego a intensidad fuerte, añade los trozos de pollo y una pizca más de sal.\n\nSaltea el pollo durante un par de minutos hasta que se dore ligeramente por fuera.\n\nAgrega las 2 cucharadas de tomate y remueve bien para integrar.\n\n5. 🥥 Reducir la salsa\n\nVierte la leche de coco (o leche) cubriendo bien el pollo y remueve todo el conjunto.\n\nBaja el fuego a medio-bajo y deja cocinar a fuego lento durante unos 30 minutos, removiendo de vez en cuando, hasta que la salsa reduzca y espese.\n\n🍽️ Presentación\n\nServir el pollo al curry bien caliente acompañado de arroz basmati recién cocido.\n\nEspolvorea por encima cilantro o perejil fresco picado para darle un toque fresco de color."
+  },
+  {
     "id": 1787140111679,
     "title": "Muhammara",
     "category": [
