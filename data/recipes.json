@@ -1,5 +1,18 @@
 [
   {
+    "id": 1787136149728,
+    "title": "Pollo Especiado con Cuscús Árabe",
+    "category": [
+      "primero"
+    ],
+    "time": "1h '30 min",
+    "difficulty": "Fácil",
+    "description": "Una deliciosa y aromática receta inspirada en la cocina del norte de África, perfecta para una comida completa, sabrosa y saludable.",
+    "image": "https://images.unsplash.com/photo-1495195134817-aeb325a55b65?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "ingredients": "\n🧄 Para el marinado:\n\n🍗 2 pechugas de pollo (limpias y sin grasa)\n🫒 2 cucharadas de aceite de oliva virgen\n🍋 El zumo de medio limón\n🧄 1 diente de ajo machacado\n🌶️ 1/4 de cucharadita de pimentón dulce\n🔥 1/4 de cucharadita de pimentón picante\n🌿 Media cucharadita de comino\n🍛 Media cucharadita de curry\n🌿 2 cucharadas de perejil fresco picado\n🧂 Sal y pimienta al gusto\n\n🌾 Para el cuscús árabe:\n\n🌾 100 gramos de cuscús\n💧 1 vaso de agua\n🍑 4 orejones\n🍇 16 uvas pasas\n🍅 2 tomates pera\n🌿 1 cucharada de perejil fresco picado\n🍋 La ralladura de medio limón\n🫒 1 cucharada de aceite de oliva\n🧂 1 cucharadita de sal\n🧂 1/4 de cucharadita de pimienta negra",
+    "instructions": "\n1. 🥣 Marinar el pollo\n\n🔪 Lava las pechugas de pollo y retira toda la grasa visible. Con un cuchillo afilado, haz varias incisiones profundas en cada pechuga.\n🥄 En un recipiente pequeño, mezcla el aceite de oliva, el zumo de limón, el ajo machacado, el pimentón dulce, el pimentón picante, el comino, el curry, el perejil, la sal y la pimienta.\n🍗 Agrega las pechugas y frótalas bien con la marinada, haciendo que entre por las incisiones.\n❄️ Tapa el recipiente y reserva en la nevera durante al menos 1 hora.\n\n2. 🌾 Preparar el cuscús\n\n🫖 Calienta un vaso de agua en un cazo. Cuando empiece a hervir, viértelo sobre el cuscús en un cuenco.\n⏳ Tapa y deja reposar de 5 a 10 minutos para que el cuscús se hinche.\n🍴 Escurre bien si queda líquido sobrante y remueve con un tenedor para esponjar los granos.\n🥗 Agrega los orejones troceados, las uvas pasas, los tomates picados, la cucharada de perejil, la ralladura de limón, el aceite de oliva, la sal y la pimienta. Mezcla todo bien.\n\n3. 🔥 Cocinar y servir\n\n🍳 Pon una sartén antiadherente al fuego. Cuando esté bien caliente, coloca las pechugas y cocínalas a fuego medio durante 3 minutos por cada lado (o hasta que estén bien hechas por dentro).\n🔪 Corta las pechugas en rebanadas aprovechando las incisiones previas.\n🍽️ Sirve el pollo acompañado del cuscús árabe y decora con un toque de perejil fresco. ¡Buen provecho! 😋"
+  },
+  {
     "id": 1787104191328,
     "title": "Consomé Casero Reconfortante",
     "category": [
