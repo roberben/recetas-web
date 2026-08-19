@@ -107,15 +107,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Cards Logic
-  const renderRecipes = (recipesToRender) => {
-    recipeGrid.innerHTML = '';
-    
-    if (recipesToRender.length === 0) {
-      recipeGrid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary); font-size: 1.2rem;">No se encontraron recetas.</p>';
-      return;
+  let currentPage = 0;
+  const pageSize = 20;
+  let currentFilteredRecipes = recipes;
+
+  const renderRecipeCards = (recipesChunk, append = false) => {
+    if (!append) {
+      recipeGrid.innerHTML = '';
+      if (recipesChunk.length === 0) {
+        recipeGrid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary); font-size: 1.2rem;">No se encontraron recetas.</p>';
+        return;
+      }
     }
 
-    recipesToRender.forEach((recipe, index) => {
+    recipesChunk.forEach((recipe, index) => {
       const card = document.createElement('article');
       card.className = 'recipe-card';
       card.style.animationDelay = `${index * 0.1}s`;
@@ -145,6 +150,38 @@ document.addEventListener('DOMContentLoaded', () => {
       recipeGrid.appendChild(card);
     });
   };
+
+  const renderRecipes = (recipesToRender) => {
+    currentFilteredRecipes = recipesToRender;
+    currentPage = 0;
+    renderRecipeCards(currentFilteredRecipes.slice(0, pageSize), false);
+  };
+
+  const loadMoreRecipes = () => {
+    const nextStart = (currentPage + 1) * pageSize;
+    const nextChunk = currentFilteredRecipes.slice(nextStart, nextStart + pageSize);
+    
+    if (nextChunk.length > 0) {
+      const loadingIndicator = document.getElementById('loadingIndicator');
+      if (loadingIndicator) loadingIndicator.style.display = 'block';
+      
+      setTimeout(() => {
+        renderRecipeCards(nextChunk, true);
+        currentPage++;
+        if (loadingIndicator) loadingIndicator.style.display = 'none';
+      }, 400);
+    }
+  };
+
+  const scrollSentinel = document.getElementById('scrollSentinel');
+  if (scrollSentinel) {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        loadMoreRecipes();
+      }
+    }, { rootMargin: '100px' });
+    observer.observe(scrollSentinel);
+  }
 
   renderRecipes(recipes);
 
