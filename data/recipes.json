@@ -1,5 +1,18 @@
 [
   {
+    "id": 1787138949426,
+    "title": "Lomo a la Naranja ",
+    "category": [
+      "plato principal"
+    ],
+    "time": "´40min",
+    "difficulty": "Fácil",
+    "description": "Una receta sabrosa, jugosa y rápida de preparar, ideal para cualquier día de la semana o una ocasión especial.",
+    "image": "https://images.unsplash.com/photo-1495195134817-aeb325a55b65?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "ingredients": "🥩 1 kg de lomo de cerdo (en filetes)\n\n🍊 Zumo de 3 naranjas\n\n🧅 1 cebolla grande\n\n🍷 1 vaso de vino blanco\n\n🧂 1/2 pastilla de Avecrem (caldo de carne)\n\n🌾 1 cucharadita de harina\n\n🧂 Sal y pimienta negra al gusto\n\n🫒 Aceite de oliva para freír\n",
+    "instructions": "\n1. Freír el lomo\nSalpimenta los filetes de lomo por ambos lados al gusto.\nEn una sartén con un buen chorro de aceite de oliva, fríelos a fuego medio-alto hasta que se doren por fuera.\nRetira los filetes y colócalos en una cazuela o fuente. Reserva el aceite en la sartén.\n\n2. Preparar la base de la salsa\nEn el mismo aceite de freír la carne, pocha la cebolla bien picadita a fuego medio hasta que esté transparente.\nAñade la cucharadita de harina y remueve durante 1 minuto para cocinarla y evitar el sabor a harina cruda.\n\n3. Agregar los líquidos\nIncorpora el zumo de las 3 naranjas, el vaso de vino blanco y la media pastilla de Avecrem desmenuzada.\nDeja cocinar durante unos minutos a fuego medio para que se evapore el alcohol del vino.\n\n4. Triturar y colar la salsa\nPasa toda la mezcla al vaso de la batidora y tritura bien.\nCuela la salsa para dejarla fina, homogénea y libre de grumos o trozos de cebolla.\n\n5. Hervor final\nVierte la salsa colada sobre los filetes de lomo que tenías reservados.\nLleva todo a fuego suave y dale un hervor de 3 a 5 minutos para que la carne se empape de todo el sabor de la salsa. ¡Servir caliente!\n"
+  },
+  {
     "id": 1787137011311,
     "title": "Pimientos Rellenos de Maribel",
     "category": [
