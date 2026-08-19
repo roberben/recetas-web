@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     while (retries < maxRetries) {
       try {
         const res = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}?t=${Date.now()}`, {
-          headers: { 'Authorization': `token ${githubToken}`, 'Cache-Control': 'no-cache' }
+          headers: { 'Authorization': `token ${githubToken}` }
         });
         if (!res.ok) throw new Error("No se pudo obtener el archivo más reciente para " + path);
         
