@@ -1,5 +1,18 @@
 [
   {
+    "id": 1787104191328,
+    "title": "Consomé Casero Reconfortante",
+    "category": [
+      "primero"
+    ],
+    "time": "'40 min",
+    "difficulty": "Fácil",
+    "description": "Un caldo concentrado, limpio y lleno de sabor tradicional, preparado de forma rápida en olla exprés con carnes selectas y verduras frescas.",
+    "image": "./images/recipe_1787104189104_Consom.jpg",
+    "ingredients": "🥩 Carnes y huesos:\n\n250 g Morcillo de ternera (1/4 kg)\n1/4 ud Trasero de pollo\n1 ud Hueso de jamón\n1 trozo Jamón serrano\n\n🥕 Verduras y hortalizas:\n\n1 – 2 ud Zanahorias\n1 ud Nabo\n1 rama de Apio\n1 ud Cebolla\n1 puñado Judías verdes\n1 manojo Espinacas frescas\n\n💧 Líquidos y condimentos:\nc/n Agua (para cubrir holgadamente los ingredientes)\nc/n Sal (probar al final, ya que el jamón aporta bastante sal)",
+    "instructions": "1️⃣ Preparar los ingredientes\n\nLimpia y pela las verduras: las zanahorias, el nabo y la cebolla.\n\nLava la rama de apio y retira los extremos y las hebras de las judías verdes.\n\nEnjuaga ligeramente los trozos de carne y el hueso de jamón bajo el grifo.\n\n\n2️⃣ Cocción principal en olla exprés\n\nIntroduce en la olla exprés el morcillo, el trasero de pollo, el hueso de jamón, el trozo de jamón serrano, las zanahorias, el nabo, el apio, la cebolla y las judías verdes (reserva las espinacas para el final).\n\nCubre todo con abundante agua.\n\nCierra la olla exprés, ponla a fuego alto y, una vez suba la válvula o empiece a pitar, baja a fuego medio y cocina durante 20 minutos.\n\n\n3️⃣ Añadir las espinacas y terminar\n\nDeja que la olla pierda la presión por completo y ábrela con seguridad.\n\nIncorpora las hojas de espinacas frescas a la olla abierta.\n\nCocina a fuego suave durante 5 minutos más para que las espinacas se pochen y aporten su toque final al caldo.\n\n\n4️⃣ Colado y servicio\n\nRetira la carne y las verduras con una espumadera (puedes reservarlas para comer aparte o aprovecharlas para otras recetas).\n\nCuela el caldo por un colador fino o gasa para obtener un consomé limpio, transparente y sin impurezas.\n\nPrueba el punto de sal y ajusta si es necesario.\n\n\n💡 Consejo de servicio: Sírvelo bien caliente en tazas de consomé. Puedes acompañarlo con un chorrito de vino de Jerez, huevo hilado, dados pequeños de jamón o unas hojas de las mismas espinacas cocidas."
+  },
+  {
     "id": 1787070256832,
     "title": "Gazpacho Tradicional Andaluz",
     "category": [
