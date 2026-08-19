@@ -185,33 +185,14 @@
   {
     "id": 7,
     "title": "Codillos de Cerdo al Horno",
-    "category": "plato principal",
+    "category": [
+      "plato principal"
+    ],
     "time": "2 horas",
     "difficulty": "Media",
     "description": "Jugosos codillos asados lentamente con un glaseado de mostaza y miel, acompañados de patatas tiernas y tomates asados.",
     "image": "./images/recipe_1787013283697_Codilloalhorno.jpg",
-    "ingredients": [
-      "🥩 PARA LA CARNE:",
-      "2 Codillos de cerdo (aprox. 700 g cada uno)",
-      "Aceite de oliva virgen extra (2-3 cucharadas)",
-      "Sal y pimienta negra molida al gusto",
-      "1.5 vasos de vino para cocinar (o agua)",
-      "🍯 PARA LA SALSA:",
-      "2 cdas soperas colmadas de mostaza",
-      "2 cdas soperas de miel",
-      "1 cdita de ajo en polvo",
-      "1 cdita de cebolla en polvo",
-      "1 cdita de pimentón dulce",
-      "🥔 PARA LA GUARNICIÓN:",
-      "3-4 patatas medianas troceadas",
-      "8-10 tomates cherry"
-    ],
-    "instructions": [
-      "Condimenta los codillos en una bandeja con el aceite, sal y pimienta, masajeando bien la carne.",
-      "Hornea a 180 ºC con 1/2 vaso de vino en el fondo durante 30 minutos (dando la vuelta a los 15 min).",
-      "Mezcla la mostaza, miel, ajo, cebolla y pimentón para crear la salsa glaseada.",
-      "Unta los codillos con la salsa, añade 1 vaso de vino al fondo, cubre con aluminio y hornea 1 hora más.",
-      "Quita el aluminio, vuelve a pincelar, añade las patatas y los tomates, y hornea destapado 30 minutos finales (dando la vuelta a los codillos a la mitad)."
-    ]
+    "ingredients": "- 🥩 PARA LA CARNE:\n\n- 2 Codillos de cerdo (aprox. 700 g cada uno)\n\n- Aceite de oliva virgen extra (2-3 cucharadas)\n\n- Sal y pimienta negra molida al gusto\n\n- 1.5 vasos de vino para cocinar (o agua)\n\n- 🍯 PARA LA SALSA:\n\n- 2 cdas soperas colmadas de mostaza\n\n- 2 cdas soperas de miel\n\n- 1 cdita de ajo en polvo\n\n- 1 cdita de cebolla en polvo\n\n- 1 cdita de pimentón dulce\n\n- 🥔 PARA LA GUARNICIÓN:\n\n- 3-4 patatas medianas troceadas\n\n- 8-10 tomates cherry",
+    "instructions": "1. Condimenta los codillos en una bandeja con el aceite, sal y pimienta, masajeando bien la carne.\n2. Hornea a 180 ºC con 1/2 vaso de vino en el fondo durante 30 minutos (dando la vuelta a los 15 min).\n3. Mezcla la mostaza, miel, ajo, cebolla y pimentón para crear la salsa glaseada.\n4. Unta los codillos con la salsa, añade 1 vaso de vino al fondo, cubre con aluminio y hornea 1 hora más.\n5. Quita el aluminio, vuelve a pincelar, añade las patatas y los tomates, y hornea destapado 30 minutos finales (dando la vuelta a los codillos a la mitad)."
   }
 ]
