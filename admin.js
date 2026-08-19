@@ -75,22 +75,54 @@ document.addEventListener('DOMContentLoaded', () => {
     checkAuth();
   });
 
-  const commitToGithub = async (message, newContent, updateSha, path) => {
-    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(newContent, null, 2))));
-    const updateRes = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`, {
-      method: 'PUT',
-      headers: {
-        'Authorization': `token ${githubToken}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        message: message,
-        content: encoded,
-        sha: updateSha
-      })
-    });
-    if (!updateRes.ok) throw new Error("Fallo al hacer commit a GitHub en " + path);
-    return await updateRes.json();
+  const updateJsonFileWithRetry = async (path, message, modifierFn, maxRetries = 3) => {
+    let retries = 0;
+    while (retries < maxRetries) {
+      try {
+        const res = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}?t=${Date.now()}`, {
+          headers: { 'Authorization': `token ${githubToken}`, 'Cache-Control': 'no-cache' }
+        });
+        if (!res.ok) throw new Error("No se pudo obtener el archivo más reciente para " + path);
+        
+        const fileData = await res.json();
+        const latestSha = fileData.sha;
+        const currentData = JSON.parse(decodeURIComponent(escape(atob(fileData.content))));
+        
+        const newData = modifierFn(currentData);
+        
+        const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(newData, null, 2))));
+        const updateRes = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `token ${githubToken}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: message,
+            content: encoded,
+            sha: latestSha
+          })
+        });
+
+        if (updateRes.status === 409) {
+          retries++;
+          console.warn(`Conflicto 409 detectado (intento ${retries}). Sincronizando y reintentando...`);
+          await new Promise(r => setTimeout(r, 500 * retries));
+          continue;
+        }
+
+        if (!updateRes.ok) throw new Error("Fallo al hacer commit a GitHub en " + path);
+        
+        const updateData = await updateRes.json();
+        return { newData, newSha: updateData.content.sha };
+      } catch (err) {
+        if (retries >= maxRetries - 1) throw err;
+        retries++;
+        console.warn(`Error de red al guardar, reintentando... (${retries})`);
+        await new Promise(r => setTimeout(r, 1000));
+      }
+    }
+    throw new Error("Sincronización fallida tras varios intentos. Recarga la página y vuelve a intentarlo.");
   };
 
   // --- DATA LOADING ---
@@ -189,11 +221,14 @@ document.addEventListener('DOMContentLoaded', () => {
     addCategoryBtn.disabled = true;
 
     try {
-      const newArray = [...currentCategories, newCat];
-      const resData = await commitToGithub(`Añadir categoría: ${newCat}`, newArray, categoriesSha, CATS_PATH);
+      const { newData, newSha } = await updateJsonFileWithRetry(
+        CATS_PATH,
+        `Añadir categoría: ${newCat}`,
+        (latestData) => [...latestData, newCat]
+      );
       
-      categoriesSha = resData.content.sha;
-      currentCategories = newArray;
+      categoriesSha = newSha;
+      currentCategories = newData;
       
       newCategoryInput.value = '';
       renderCategoryList();
@@ -211,11 +246,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!confirmDelete) return;
 
     try {
-      const newArray = currentCategories.filter(c => c !== cat);
-      const resData = await commitToGithub(`Borrar categoría: ${cat}`, newArray, categoriesSha, CATS_PATH);
+      const { newData, newSha } = await updateJsonFileWithRetry(
+        CATS_PATH,
+        `Borrar categoría: ${cat}`,
+        (latestData) => latestData.filter(c => c !== cat)
+      );
       
-      categoriesSha = resData.content.sha;
-      currentCategories = newArray;
+      categoriesSha = newSha;
+      currentCategories = newData;
       renderCategoryList();
       populateCategorySelect();
     } catch (err) {
@@ -368,11 +406,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!confirmDelete) return;
 
     try {
-      const newArray = currentRecipes.filter(r => r.id != id);
-      const resData = await commitToGithub(`Borrar receta ${id}`, newArray, recipesSha, RECIPES_PATH);
+      const { newData, newSha } = await updateJsonFileWithRetry(
+        RECIPES_PATH,
+        `Borrar receta ${id}`,
+        (latestData) => latestData.filter(r => r.id != id)
+      );
       
-      recipesSha = resData.content.sha;
-      currentRecipes = newArray;
+      recipesSha = newSha;
+      currentRecipes = newData;
       renderRecipeList();
       alert("Receta eliminada correctamente.");
     } catch (err) {
@@ -455,17 +496,20 @@ document.addEventListener('DOMContentLoaded', () => {
         instructions: document.getElementById('recipeInstructions').value
       };
 
-      let newArray;
-      if (isEditing) {
-        newArray = currentRecipes.map(r => r.id == editingId ? newRecipeData : r);
-      } else {
-        newArray = [newRecipeData, ...currentRecipes];
-      }
-
-      const resData = await commitToGithub(isEditing ? `Editar receta: ${newRecipeData.title}` : `Añadir receta: ${newRecipeData.title}`, newArray, recipesSha, RECIPES_PATH);
+      const { newData, newSha } = await updateJsonFileWithRetry(
+        RECIPES_PATH,
+        isEditing ? `Editar receta: ${newRecipeData.title}` : `Añadir receta: ${newRecipeData.title}`,
+        (latestData) => {
+          if (isEditing) {
+            return latestData.map(r => r.id == editingId ? newRecipeData : r);
+          } else {
+            return [newRecipeData, ...latestData];
+          }
+        }
+      );
       
-      recipesSha = resData.content.sha;
-      currentRecipes = newArray;
+      recipesSha = newSha;
+      currentRecipes = newData;
       
       formFeedback.textContent = isEditing ? "¡Cambios guardados con éxito!" : "¡Receta publicada con éxito!";
       formFeedback.style.color = "#10b981";
